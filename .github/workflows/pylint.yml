@@ -51,15 +51,15 @@ jobs:
     - name: move build files to static files repo
       run: |
         cd ../static_site_repo
-        echo "3"
-        ls
-        pwd
+        echo "3"       
         touch aa.txt
+       ls
+        pwd
         
       
     - name: push changed files
       run: |
         cd ../static_site_repo
         git add .
-        git commit -m "$(git -C ../static-site-generator/ log --format=%B -n 1)"
+        git commit -m "autocommit"
         git push origin master
