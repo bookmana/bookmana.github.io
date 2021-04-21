@@ -10,8 +10,7 @@ jobs:
     steps:               
     - name: bookmana blog
       uses: actions/checkout@master
-      with:
-        path: 'static-site-generator'
+
          
     - name: git config
       env:
@@ -48,18 +47,23 @@ jobs:
         git clone git@github.com:bookmana/bookmana.github.io.git static_site_repo
         ls
 
-    - name: move build files to static files repo
-      run: |
-        cd ../static_site_repo
-        echo "3"       
-        touch aa.txt
-        ls
-        pwd
+#    - name: move build files to static files repo
+#      run: |
+#        cd ../static_site_repo
+#        echo "3"       
+        
         
       
-    - name: push changed files
+    - name: push changed files    
       run: |
-        cd ../static_site_repo
-        git add .
+        cd ../static_site_repo        
+        ls
+        pwd
+        touch aa.txt
+        git add aa.txt
         git commit -m "autocommit"
-        git push origin master
+        ls
+        git push -u origin main
+#        git push -u origin master
+        
+ 
