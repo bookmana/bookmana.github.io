@@ -50,7 +50,7 @@ jobs:
 
     - name: move build files to static files repo
       run: |
-        cd static_site_repo
+        cd ../static_site_repo
         echo "3"
         pwd
       
