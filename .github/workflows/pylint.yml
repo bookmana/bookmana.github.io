@@ -37,11 +37,9 @@ jobs:
       
     - name: clone static_site_repo
       run: |
-        ll
         pwd        
         echo "1"
         cd ..
-        ll
         pwd        
         echo "2"
         mkdir static_site_repo
