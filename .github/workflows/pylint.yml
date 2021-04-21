@@ -33,7 +33,7 @@ jobs:
     - name: clone static_site_repo
       run: |
         cd ..
-        gh auth login --with-token < ${{ secrets.TOKEN }}
+        gh auth login --with-token < ${{ secrets.TOKEN }} 
         gh repo clone bookmana/bookmana.github.io static_site_repo
 
 
