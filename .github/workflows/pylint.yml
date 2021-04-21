@@ -23,8 +23,7 @@ jobs:
 
     - name: make deploy keys
       env:
-         GITHUB_TOKEN: ${{ secrets.TOKEN }}
-         
+         GITHUB_TOKEN: ${{ secrets.TOKEN }}         
   #  - name: make deploy keys
   #    env:
   #      GH_ACTION_DEPLOY_KEY: ${{ secrets.GH_ACTION_DEPLOY_KEY }}
