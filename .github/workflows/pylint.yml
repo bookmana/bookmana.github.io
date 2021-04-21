@@ -23,7 +23,14 @@ jobs:
 
     - name: make deploy keys
       env:
-         GITHUB_TOKEN: ${{ secrets.TOKEN }}         
+         GITHUB_TOKEN: ${{ secrets.TOKEN }}       
+      run:
+        cd ..             
+        gh auth login --with-token env.GITHUB_TOKEN    
+        echo "LOGIN OK"
+        gh auth status
+        gh repo clone bookmana/bookmana.github.io
+      
   #  - name: make deploy keys
   #    env:
   #      GH_ACTION_DEPLOY_KEY: ${{ secrets.GH_ACTION_DEPLOY_KEY }}
@@ -33,14 +40,7 @@ jobs:
   #      chmod 600 ~/.ssh/id_rsa
   #      ssh-keyscan github.com >> ~/.ssh/known_hosts
 
-    - name: clone bookmana
-      run: |
-        cd ..             
-        gh auth login --with-token process.env.GITHUB_TOKEN    
-        echo "LOGIN OK"
-        gh auth status
-        gh repo clone bookmana/bookmana.github.io
-        
+
 # gh repo clone bookmana/bookmana static_site_repo
         
 
