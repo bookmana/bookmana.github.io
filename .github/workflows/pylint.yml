@@ -27,13 +27,19 @@ jobs:
       run: |
         echo env.GITHUB_TOKEN
         
-    - name: clone bookmana      
+    - name: auth login
       run: |
-        cd ..             
         gh auth login --with-token process.env.GITHUB_TOKEN
-        echo "LOGIN OK"
+
+    - name: auth status    
+      run: |
         gh auth status
-        gh repo clone bookmana/bookmana.github.io
+        
+#cd ..             
+
+#        echo "LOGIN OK"
+#        gh auth status
+#        gh repo clone bookmana/bookmana.github.io
       
   #  - name: make deploy keys  
   #    run: |
