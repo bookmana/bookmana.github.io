@@ -46,8 +46,7 @@ jobs:
         ls
         pwd        
         git clone git@github.com:bookmana/bookmana.github.io.git static_site_repo
-        cd ../static_site_repo        
-        ls
+
 
     - uses: actions/checkout@v2
     - name: Set up Python ${{ matrix.python-version }}
