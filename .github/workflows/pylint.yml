@@ -7,13 +7,15 @@ jobs:
     name: build
     runs-on: ubuntu-latest
 
-    steps:    
-    - name: clone gatsby-blog
+    steps:  
+    - uses: ./.github/actions/hub-create-repos
+      env:
+         GITHUB_TOKEN: ${{ secrets.TOKEN }}
+         
+    - name: clone bookmana blog
       uses: actions/checkout@master
       with:
         path: 'static-site-generator'
-      env:
-         GITHUB_TOKEN: ${{ secrets.TOKEN }}
          
     - name: git config
       env:
@@ -34,8 +36,7 @@ jobs:
 
     - name: clone static_site_repo
       run: |
-        cd ..
-        gh auth status         
+        cd ..             
         gh auth login --with-token process.env.GITHUB_TOKEN         
         gh auth status        
         #gh repo clone bookmana/bookmana static_site_repo
