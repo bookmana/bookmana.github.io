@@ -8,6 +8,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>
@@ -18,7 +19,27 @@
   {%- endif -%}
   </title>
 
-  {% seo title=false %}
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article"> 
+  <meta property="og:title" content="{% if page.title %}{{page.title}} - {{site.title}}{% else %}{{site.title}}{% endif %}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">   
+  <meta property="og:image" content="{% if page.img_url %}{{page.img_url}}{% else %}{{site.img_url}}{% endif %}">  
+  <meta property="og:site_name" content="BookMana BLOG">
+  <meta property="article:publisher" content="https://bookmana.github.io/" />
+  <meta property="article:author" content="https://bookmana.github.io/" />
+  <meta property="article:published_time" content="{{ page.date }}" /> 
+  <meta property="og:description" content="{% if page.desc %}{{ page.desc | striptags | truncate: 160 | escape}}{% else %} {{page.description}} - {{site.description}}{% endif %}">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@ahnsk3939" />
+  <meta name="twitter:creator" content="@ahnsk3939">
+  <meta name="twitter:url" content="{{ site.url }}{{ page.url }}">  
+  <meta name="twitter:title" content="{% if page.title %}{{page.title}} - {{site.title}}{% else %}{{site.title}}{% endif %}">
+  <meta name="twitter:description" content="{% if page.desc %}{{ page.desc | striptags | truncate: 160 | escape}}{% else %} {{page.description}} - {{site.description}}{% endif %}">
+  <meta name="twitter:image" content="{% if page.img_url %}{{page.img_url}}{% else %}{{site.img_url}}{% endif %}">
+
+  <link rel="canonical" href="{{ page.url | prepend: site.url }}">
+
 
   {% include favicons.html %}
 
