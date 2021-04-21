@@ -53,7 +53,7 @@ jobs:
         cd ../static_site_repo
         echo "3"       
         touch aa.txt
-       ls
+        ls
         pwd
         
       
