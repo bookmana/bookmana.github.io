@@ -11,7 +11,7 @@ jobs:
     - uses: actions/checkout@master
     - uses: ./.github/actions/hub-create-repos
       env:
-         GITHUB_TOKEN: ${{ secrets.API_TOKEN_GITHUB }}
+         GITHUB_TOKEN: ${{ secrets.TOKEN }}
          
     - name: clone gatsby-blog
       uses: actions/checkout@master
