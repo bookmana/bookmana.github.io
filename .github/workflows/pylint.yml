@@ -34,6 +34,7 @@ jobs:
       run: |
         cd ..
         gh auth login --with-token < ${{ secrets.TOKEN }} 
+        gh auth status
         gh repo clone bookmana/bookmana.github.io static_site_repo
 
 
