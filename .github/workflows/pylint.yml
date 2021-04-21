@@ -10,8 +10,6 @@ jobs:
     steps:               
     - name: bookmana blog
       uses: actions/checkout@master
-
-         
     - name: git config
       env:
         USER_NAME: ${{ github.event.pusher.name }}
@@ -45,18 +43,13 @@ jobs:
         ls
         pwd        
         git clone git@github.com:bookmana/bookmana.github.io.git static_site_repo
+        cd ../static_site_repo        
         ls
-
-#    - name: move build files to static files repo
-#      run: |
-#        cd ../static_site_repo
-#        echo "3"       
-        
         
       
     - name: push changed files    
       run: |
-        cd ../static_site_repo        
+        cd ../static_site_repo
         ls
         pwd
         touch aa.txt
