@@ -43,7 +43,10 @@ jobs:
         pwd        
         echo "2"
         mkdir static_site_repo
+        ls
+        pwd        
         git clone git@github.com:bookmana/bookmana.github.io.git static_site_repo
+        ls
 
     - name: move build files to static files repo
       run: |
