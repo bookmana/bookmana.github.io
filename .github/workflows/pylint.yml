@@ -52,11 +52,14 @@ jobs:
       run: |
         cd ../static_site_repo
         echo "3"
+        ls
         pwd
+        touch aa.txt
+        
       
-  #  - name: push changed files
-  #    run: |
-  #      cd ../static_site_repo
-  #      git add .
-  #      git commit -m "$(git -C ../static-site-generator/ log --format=%B -n 1)"
-  #      git push origin master
+    - name: push changed files
+      run: |
+        cd ../static_site_repo
+        git add .
+        git commit -m "$(git -C ../static-site-generator/ log --format=%B -n 1)"
+        git push origin master
