@@ -2,7 +2,7 @@ name: bookmana action
 
 on:
   schedule:
-  - cron: "*/7 0-23 * * *"
+  - cron: "7,25,48 0-23 * * *"
 
 jobs:
   build:
