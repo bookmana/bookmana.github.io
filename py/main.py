@@ -201,8 +201,8 @@ if __name__  == "__main__":
 					# if cnt > 5:
 					# 	break
 					try:
-						book_nm 		= node.find('title').text
-						description 	= "{} {}".format("●",node.find('description').text)
+						book_nm 		= node.find('title').text						
+						description 	= node.find('description').text
 						coverLargeUrl 	= node.find('coverLargeUrl').text
 						coverSmallUrl 	= node.find('coverSmallUrl').text
 						author 			= node.find('author').text
@@ -223,12 +223,14 @@ if __name__  == "__main__":
 							if desc:
 								description2 = desc	
 							if not description:
-								description = "{} {}".format("●",description2)
+								description = "{} {}".format("● ",description2)
 								description2 = ''
 						# print('1 : ',description)
 						# print('2 : ',author)
 						# print('3 : ',isbn)
 
+						if description:
+							description = "{} {}".format("● ",description)
 
 						if description and author and isbn:
 							book_nm = ask_util.getSqlReplace(book_nm)
@@ -306,3 +308,4 @@ if __name__  == "__main__":
 429 	DVD>유아동/교육DVD
 430 	DVD>EBS 교육용
 """
+#https://crontab.guru/
