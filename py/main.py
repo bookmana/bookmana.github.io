@@ -160,7 +160,7 @@ if __name__  == "__main__":
 						if isBookMana(prdNo):
 							print("continue : ",prdNo," | ",inter_catId)
 							continue
-						print("1")
+						
 						book_nm 		= node.find('title').text						
 						description 	= node.find('description').text
 						coverLargeUrl 	= node.find('coverLargeUrl').text
@@ -174,18 +174,22 @@ if __name__  == "__main__":
 						pubDate 			= node.find('pubDate').text						
 						price = node.find('priceStandard').text										
 						description2 =''
-						print("2")
+						
 						if isbn or not description:
-							desc = naverBookSearch(isbn)['items'][0]['description']
-							if desc:
-								description2 = desc	
-							if not description:
-								description = "{} {}".format("● ",description2)
-								description2 = ''
-						print("3")
+							try:
+								desc = naverBookSearch(isbn)['items'][0]['description']							
+								if desc:
+									description2 = desc	
+								if not description:
+									description = "{} {}".format("● ",description2)
+									description2 = ''									
+							except Exception as e:
+								print("naverBookSearch e : ",e)
+
+						
 						if description:
 							description = "{} {}".format("● ",description)
-						print("4")
+						
 						if description and author and isbn:
 							book_nm = ask_util.getSqlReplace(book_nm)
 							description = ask_util.getSqlReplace(description)
@@ -208,7 +212,7 @@ if __name__  == "__main__":
 						print("5")
 					except Exception as e:
 						print(e)
-						quit()					
+											
 				# if for_cnt > 2:
 				# 	break
 	except Exception as e:		
