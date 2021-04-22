@@ -7,7 +7,7 @@ on:
 
 
 jobs:
-  runs:
+  run:
     name: build
     runs-on: ubuntu-latest
     strategy:
