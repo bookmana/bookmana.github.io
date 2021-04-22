@@ -6,9 +6,7 @@ TARGET_DIR = "/static_site_repo/_posts"
 FULL_PATH = "{}{}".format(BASE_DIR, TARGET_DIR)
 
 def create_book(bfo, review_list, row):
-	now = datetime.datetime.now()
-	print("now : ",now)
-	print( "{} {}".format(now.strftime('%Y-%m-%d %H:%M:%S'),"+0900"))
+	now = datetime.datetime.now()		
 	prd_no 			= bfo['PRD_NO']
 	book_nm 		= bfo['BOOK_NM']
 	price 			= bfo['PRICE']
@@ -16,6 +14,13 @@ def create_book(bfo, review_list, row):
 	book_desc2 		= bfo['BOOK_DESC2']
 	book_img_l_url  = bfo['BOOK_IMG_L_URL']
 	book_img_s_url  = bfo['BOOK_IMG_S_URL']
+
+	try:
+		book_img_l_url = book_img_l_url.replace("http:","https:")
+		book_img_s_url = book_img_s_url.replace("http:","https:")
+	except Exception as e:
+		print(e)
+		
 	author 			= bfo['AUTHOR']
 	isbn_no 		= bfo['ISBN_NO']
 	category_id 	= bfo['CATEGORY_ID']
