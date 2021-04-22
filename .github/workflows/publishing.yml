@@ -1,7 +1,4 @@
-#on: [push]
-on:
-  push:
-    branches: [ master ]
+on: [push]
     
 #  schedule:
 #  - cron: "5,14,26,38,53 * * * *"
