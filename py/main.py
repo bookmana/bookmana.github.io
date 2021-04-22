@@ -66,5 +66,5 @@ except Exception as e:
 	print(" e: ",e)
 
 ad = ask_db.AskDb(host, user, pw, db)
-cnt = ad.selectOne(""" SELECT COUNT(*) FROM BOOK_MANA_ORDER WHERE PRD_NO ='%s' """ % prdNo)[0]
+cnt = ad.selectOne(""" SELECT COUNT(*) FROM BOOK_MANA_ORDER WHERE PRD_NO ='%s' """ % '111')[0]
 print(cnt)
