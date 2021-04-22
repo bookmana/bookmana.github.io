@@ -88,7 +88,7 @@ def interParkBestSeller(catId):
 
 def bookManaOrderInsert(prdNo):
 	sqlId = """ INSERT INTO BOOK_MANA_ORDER VALUES('%s')""" %(prdNo)
-	print(sqlId)
+	#print(sqlId)
 	ad.insert(sqlId)
 
 def isBookMana(prdNo):
@@ -114,7 +114,7 @@ def bookreviewInsert(prdNo):
 
 #네이버 책검색
 def naverBookSearch(isbn):
-	print("naverBookSearch start")
+	#print("naverBookSearch start")
 	encText = urllib.parse.quote("검색할 단어")
 	url = "https://openapi.naver.com/v1/search/book_adv?d_isbn=" + isbn # json 결과		
 	request = urllib.request.Request(url)
@@ -144,7 +144,7 @@ if __name__  == "__main__":
 		for ic in interpark_catid:
 			for_cnt+=1
 			inter_catId = ic
-			print("inter_catId : ",inter_catId)			
+			#print("inter_catId : ",inter_catId)			
 			xtree = interParkBestSeller(inter_catId)
 			book_cd2 = book_code[inter_catId]
 			if inter_catId[:1]=='1':
@@ -154,9 +154,15 @@ if __name__  == "__main__":
 
 			if xtree:				
 				for node in xtree.findall('item'):
-					cnt+=1
-					print("cnt : ",str(cnt))					
+					
+										
 					try:
+						parts = urlparse(node.find('link').text) #http://book.interpark.com/blog/integration/product/itemDetail.rdo?prdNo=348910874&refererType=8305					
+						prdNo = parse_qs(parts.query)['prdNo'][0]
+						if isBookMana(prdNo):
+							print("continue : ",prdNo," | ",inter_catId)
+							continue
+
 						book_nm 		= node.find('title').text						
 						description 	= node.find('description').text
 						coverLargeUrl 	= node.find('coverLargeUrl').text
@@ -168,22 +174,15 @@ if __name__  == "__main__":
 						categoryName 			= node.find('categoryName').text
 						publisher 			= node.find('publisher').text
 						pubDate 			= node.find('pubDate').text						
-						parts = urlparse(node.find('link').text) #http://book.interpark.com/blog/integration/product/itemDetail.rdo?prdNo=348910874&refererType=8305					
-						prdNo = parse_qs(parts.query)['prdNo'][0] 
 						price = node.find('priceStandard').text										
 						description2 =''
-						# print("isbn ",isbn)
 						if isbn or not description:
 							desc = naverBookSearch(isbn)['items'][0]['description']
-							# print("naverBookSearch start")
 							if desc:
 								description2 = desc	
 							if not description:
 								description = "{} {}".format("● ",description2)
 								description2 = ''
-						# print('1 : ',description)
-						# print('2 : ',author)
-						# print('3 : ',isbn)
 
 						if description:
 							description = "{} {}".format("● ",description)
@@ -192,24 +191,22 @@ if __name__  == "__main__":
 							book_nm = ask_util.getSqlReplace(book_nm)
 							description = ask_util.getSqlReplace(description)
 							description2 = ask_util.getSqlReplace(description2)							
-							print("insert ok gogo ",prdNo)
-							print(isBookMana(prdNo))
 
-							if not isBookMana(prdNo):
 								bfo = {"PRD_NO":prdNo,"BOOK_NM":book_nm,"PRICE":price,"BOOK_DESC":description,"BOOK_DESC2":description2,"BOOK_IMG_L_URL":coverLargeUrl,
 								"BOOK_IMG_S_URL":coverSmallUrl,"AUTHOR":author,"ISBN_NO":isbn,
 								"CATEGORY_ID":ic,"CATEGORY_NM":categoryName,"PUB_SR":publisher,"PUB_DT":pubDate,
 								"BOOK_CD1":book_cd1,"BOOK_CD2":book_cd2
-								}
-								
-############################
-								bookManaOrderInsert(prdNo)
-								review_list = ParkReview().get(prdNo)
-								make_book.create_book(bfo,review_list, for_cnt, cnt ) 
-								if cnt > 30:
-									quit()
-								time.sleep(1)
-###########################								
+								}							
+
+							cnt+=1
+							print("cnt : ",str(cnt))
+							bookManaOrderInsert(prdNo)
+							review_list = ParkReview().get(prdNo)
+							make_book.create_book(bfo,review_list, for_cnt, cnt ) 
+							if cnt > 30:
+								quit()
+							#time.sleep(1)
+						
 					except Exception as e:
 						print(e)
 						quit()
