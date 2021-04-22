@@ -6,8 +6,9 @@ TARGET_DIR = "/static_site_repo/_posts"
 FULL_PATH = "{}{}".format(BASE_DIR, TARGET_DIR)
 
 def create_book(bfo, review_list, row):
-	now = datetime.datetime.now()	
-	now = now+datetime.timedelta(minutes=(row*5))
+	now = datetime.datetime.now()
+	print("now : ",now)
+	print( "{} {}".format(now.strftime('%Y-%m-%d %H:%M:%S'),"+0900"))
 	prd_no 			= bfo['PRD_NO']
 	book_nm 		= bfo['BOOK_NM']
 	price 			= bfo['PRICE']
