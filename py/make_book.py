@@ -63,9 +63,6 @@ description: %s
 """ %  (book_nm, "{} {}".format(now.strftime('%Y-%m-%d %H:%M:%S'),"+0900"), book_cd1, book_cd2, book_img_l_url, book_desc[:170] ,isbn_no ,pub_sr, pub_dt, author, book_desc, book_desc2, book_nm)
 	print(content)
 
-	
-
-
 	rv_comment =""
 	if len(review_list) > 0:
 		rv_comment = """## **리뷰** \n\n"""		
@@ -82,11 +79,4 @@ description: %s
 	file_path ="D:/gitpage_project/bookmana_action-main/_posts/%s-%s.md"%(now.strftime('%Y-%m-%d'),isbn_no)
 	file_path = """%s/%s-%s.md""" %(FULL_PATH,now.strftime('%Y-%m-%d'),isbn_no)
 	f = open(file_path ,'w', encoding='utf8')
-	#f = open("./_posts/%s-%s.md"%(now.strftime('%Y-%m-%d'),isbn_no) ,'w', encoding='utf8')
 	f.write(content)
-
-# if __name__ == '__main__':
-# 	now = datetime.datetime.now()	
-# 	print(now.strftime('%Y-%m-%d %H:%M:%S'))
-# 	print()
-# 	
