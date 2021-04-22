@@ -250,7 +250,8 @@ if __name__  == "__main__":
 								bookManaOrderInsert(prdNo)
 								review_list = ParkReview().get(prdNo)
 								make_book.create_book(bfo,review_list,cnt )
-								quit()
+								if cnt > 3:
+									quit()
 ############################
 
 								# bookInsert(bfo)
