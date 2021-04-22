@@ -66,7 +66,7 @@ jobs:
         ls
         pwd
         touch aaa.txt
-        git add .
+        git add --all
         git commit -m "autocommit"
         ls
         git push -u origin master
