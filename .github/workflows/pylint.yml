@@ -60,7 +60,7 @@ jobs:
     - name: python run
       run: |
         python py/main.py
-      env: |
+      env: 
         NV_CENTER_API: ${{ secrets.NV_CENTER_API }}
         PARK_API_KEY: ${{ secrets.PARK_API_KEY }}
         DB_INFO: ${{ secrets.DB_INFO }}
