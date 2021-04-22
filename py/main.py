@@ -79,7 +79,7 @@ db 	=dbinfo_arr[3]
 
 def interParkBestSeller(catId):	
 	web_url 		= "http://book.interpark.com/api/bestSeller.api?key="+PARK_API_KEY+"&categoryId="+catId
-	#print("web_url : ",web_url)
+	print("web_url : ",web_url)
 	response 		= urllib.request.urlopen(web_url).read().decode('utf-8')
 	#print(response)
 
