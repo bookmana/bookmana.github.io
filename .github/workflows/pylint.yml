@@ -1,6 +1,6 @@
 name: Pylint
 
-#on: [push]
+on: [push]
 
 jobs:
   build:
@@ -59,7 +59,7 @@ jobs:
     
     - name: python run
       run: |
-        python schedule/test.py
+        python py/main.py
     - name: push changed files    
       run: |
         cd ../static_site_repo
