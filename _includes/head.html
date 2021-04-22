@@ -18,48 +18,14 @@
     {{ page.title }} | {{ site.title }}
   {%- endif -%}
   </title>
-
-  <meta property="og:locale" content="en_US">
-  <meta property="og:type" content="article"> 
-  <meta property="og:title" content="{% if page.title %}{{page.title}} - {{site.title}}{% else %}{{site.title}}{% endif %}">
-  <meta property="og:url" content="{{ site.url }}{{ page.url }}">   
-  <meta property="og:image" content="{% if page.img_url %}{{page.img_url}}{% else %}{{site.img_url}}{% endif %}">  
-  <meta property="og:site_name" content="BookMana BLOG">
-  <meta property="article:publisher" content="https://bookmana.github.io/" />
-  <meta property="article:author" content="https://bookmana.github.io/" />
-  <meta property="article:published_time" content="{{ page.date }}" /> 
-  <meta property="og:description" content="{% if page.desc %}{{ page.desc | striptags | truncate: 160 | escape}}{% else %} {{page.description}} - {{site.description}}{% endif %}">
-
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:site" content="@ahnsk3939" />
-  <meta name="twitter:creator" content="@ahnsk3939">
-  <meta name="twitter:url" content="{{ site.url }}{{ page.url }}">  
-  <meta name="twitter:title" content="{% if page.title %}{{page.title}} - {{site.title}}{% else %}{{site.title}}{% endif %}">
-  <meta name="twitter:description" content="{% if page.desc %}{{ page.desc | striptags | truncate: 160 | escape}}{% else %} {{page.description}} - {{site.description}}{% endif %}">
-  <meta name="twitter:image" content="{% if page.img_url %}{{page.img_url}}{% else %}{{site.img_url}}{% endif %}">
-
-  <link rel="canonical" href="{{ page.url | prepend: site.url }}">
-
+  
+  {% seo title=false %}
 
   {% include favicons.html %}
 
   <!-- google fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-
-  <!-- ga -->
- <!--  {% if jekyll.environment == 'production' %}
-    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials">
-    <link rel="dns-prefetch" href="https://www.google-analytics.com">
-
-    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous">
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-
-    {% if site.google_analytics.proxy_baseurl and site.google_analytics.pv %}
-      <link rel="preconnect" href="{{ site.google_analytics.proxy_baseurl }}" crossorigin="use-credentials">
-      <link rel="dns-prefetch" href="{{ site.google_analytics.proxy_baseurl }}">
-    {% endif %}
-  {% endif %} -->
 
   <!-- jsdelivr CDN -->
   <link rel="preconnect" href="cdn.jsdelivr.net">
@@ -122,14 +88,8 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
- <!--  <script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
-  <script type="text/javascript">
-    if(!wcs_add) var wcs_add = {};
-      wcs_add["wa"] = "55b4825b963e08";
-      wcs_do();
-  </script>
- -->
-  <!-- Google Tag Manager -->
+
+<!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -137,7 +97,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-PXQZT83');</script>
 <!-- End Google Tag Manager -->
   
-<!--   <script data-ad-client="ca-pub-5622940858610921" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
+  
+<!--   <script data-ad-client="ca-pub-" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
   <script>
     window.jQuery || document.write('<script src="{{ site.baseurl }}/assets/lib/jquery-3.4.1.min.js"><\/script>');
   </script>
