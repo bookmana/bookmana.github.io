@@ -237,7 +237,10 @@ def repl_under(str):
 def repl_excp(repl_text):
 	if repl_text.find('_') > -1:		
 		repl_text = repl_under(repl_text)
-
+	if repl_text.find('‘') > -1:
+		rd_max_cnt = repl_text.count("‘")
+		repl_text = repl_text.replace("‘","",rd_max_cnt)
+		
 	if repl_text.find('°') > -1:
 		rd_max_cnt = repl_text.count("°")
 		repl_text = repl_text.replace("°","",rd_max_cnt)
