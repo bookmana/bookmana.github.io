@@ -44,7 +44,7 @@ print("===========================")
 try:
 	NV_CENTER_API = os.getenv('NV_CENTER_API')
 	PARK_API_KEY = os.getenv('PARK_API_KEY')
-	DB_INFO  = os.getenv(DB_INFO)
+	DB_INFO  = os.getenv('DB_INFO')
 
 
 	PARK_API_KEY = os.getenv('PARK_API_KEY')
