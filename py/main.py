@@ -193,7 +193,9 @@ if __name__  == "__main__":
 						if description and author and isbn:
 							book_nm = ask_util.getSqlReplace(book_nm)
 							description = ask_util.getSqlReplace(description)
-							description2 = ask_util.getSqlReplace(description2)							
+							description2 = ask_util.getSqlReplace(description2)
+							description = ask_util.repl_excp(description)
+							description2 = ask_util.repl_excp(description2)	
 
 							bfo = {"PRD_NO":prdNo,"BOOK_NM":book_nm,"PRICE":price,"BOOK_DESC":description,"BOOK_DESC2":description2,"BOOK_IMG_L_URL":coverLargeUrl,
 							"BOOK_IMG_S_URL":coverSmallUrl,"AUTHOR":author,"ISBN_NO":isbn,
