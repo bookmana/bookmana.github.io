@@ -107,11 +107,6 @@ defaults:
         -
           label: Posts
           url: /
-  -
-    scope:
-      path: _drafts
-    values:
-      comments: false
   # -
   #   scope:
   #     path: tags
