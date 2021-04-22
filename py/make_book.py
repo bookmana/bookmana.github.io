@@ -54,7 +54,6 @@ desc: %s
 - **출판사 : %s**
 - **출판일 : %s**
 - **저자 : %s**
-![%s](%s)
 
 ------
 
@@ -76,7 +75,7 @@ desc: %s
 ------
 
 
-""" %  (book_nm, "{} {}".format(now.strftime('%Y-%m-%d %H:%M:%S'),"+0900"), book_cd1, book_cd2, book_img_l_url, book_desc[:170] ,isbn_no ,pub_sr, pub_dt, author, book_nm, book_img_l_url, book_desc, book_desc2, book_nm)
+""" %  (book_nm, "{} {}".format(now.strftime('%Y-%m-%d %H:%M:%S'),"+0900"), book_cd1, book_cd2, book_img_l_url, book_desc[:170] ,isbn_no ,pub_sr, pub_dt, author, book_desc, book_desc2, book_nm)
 	print(content)
 
 	
