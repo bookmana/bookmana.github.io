@@ -86,32 +86,6 @@ def interParkBestSeller(catId):
 	xtree 			= ET.fromstring(response)
 	return xtree	
 
-def pyTrim(s):
-	pat = re.compile(r'\s+') 	
-	return pat.sub('',s)
-
-def bookInsert(bfo):	
-
-	sqlId = """ INSERT INTO BOOK(PRD_NO, BOOK_NM,PRICE, BOOK_DESC,BOOK_DESC2,BOOK_IMG_L_URL,BOOK_IMG_S_URL,AUTHOR,ISBN_NO,CATEGORY_ID,CATEGORY_NM,PUB_SR,PUB_DT)
-				VALUES('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')
-			 """ % (bfo['PRD_NO'], bfo['BOOK_NM'], bfo['PRICE'], bfo['BOOK_DESC'],bfo['BOOK_DESC2'],bfo['BOOK_IMG_L_URL'],bfo['BOOK_IMG_S_URL'],bfo['AUTHOR'],bfo['ISBN_NO'],bfo['CATEGORY_ID'],bfo['CATEGORY_NM'],bfo['PUB_SR'],bfo['PUB_DT'])
-	try:
-		#print(sqlId)
-		ad.insert(sqlId)	
-	except Exception as e:
-		print(sqlId)
-		print(e)
-
-def isBook(prdNo):
-	cnt = ad.selectOne(""" SELECT COUNT(*) FROM BOOK WHERE PRD_NO ='%s' """ % prdNo)[0]
-	# print(cnt)
-	if cnt==0:
-		return False
-	elif cnt>0:
-		return True
-
-
-
 def bookManaOrderInsert(prdNo):
 	sqlId = """ INSERT INTO BOOK_MANA_ORDER VALUES('%s')""" %(prdNo)
 	print(sqlId)
@@ -119,16 +93,13 @@ def bookManaOrderInsert(prdNo):
 
 def isBookMana(prdNo):
 	cnt = ad.selectOne(""" SELECT COUNT(*) FROM BOOK_MANA_ORDER WHERE PRD_NO ='%s' """ % prdNo)[0]
-	# print(cnt)
 	if cnt==0:
 		return False
 	elif cnt>0:
 		return True
 	
 def bookreviewInsert(prdNo):
-	#print("bookreviewInsert start")
 	review_list = ParkReview().get(prdNo)
-	#print("review_list : ",review_list)
 	if len(review_list) > 0:
 		for review in review_list:
 			star = review['star']
@@ -165,24 +136,15 @@ def naverBookSearch(isbn):
 	    print("Error Code:" + rescode)
 
 
-if __name__  == "__main__":	
-	
-	
+if __name__  == "__main__":		
 	ad = ask_db.AskDb(host, user, pw, db)
-	
-	#conn = ad.getConnection()
-	#bot = telegram_bot.MyBot()
-
 	for_cnt = 0
 	cnt =0
 	try:
-		#bot.sendMsg("interParkBestSeller searching ....... ")
 		for ic in interpark_catid:
 			for_cnt+=1
 			inter_catId = ic
-			print("inter_catId : ",inter_catId)
-			#bot.sendMsg("interPark : "+inter_catId)
-			#inter_catId = interpark_catid[0]			
+			print("inter_catId : ",inter_catId)			
 			xtree = interParkBestSeller(inter_catId)
 			book_cd1 = book_code[inter_catId]
 			if inter_catId[:1]=='1':
@@ -190,16 +152,10 @@ if __name__  == "__main__":
 			else:
 				book_cd2 = "외국도서"
 
-
-			if xtree:
-				#print(xtree)
-				
-				
+			if xtree:				
 				for node in xtree.findall('item'):
 					cnt+=1
-					#print('node : ',node)
-					# if cnt > 5:
-					# 	break
+					print("cnt : ",str(cnt))					
 					try:
 						book_nm 		= node.find('title').text						
 						description 	= node.find('description').text
@@ -249,26 +205,19 @@ if __name__  == "__main__":
 ############################
 								bookManaOrderInsert(prdNo)
 								review_list = ParkReview().get(prdNo)
-								make_book.create_book(bfo,review_list, for_cnt, cnt )								
-############################
-
-								# bookInsert(bfo)
-								# bookreviewInsert(prdNo)
-								print("time.sleep(5) ~~~~~")
-								time.sleep(5)
-								# review.get("348910874")
-								#bot.sendMsg("/start bk_en .......  "+book_nm)
-													
+								make_book.create_book(bfo,review_list, for_cnt, cnt ) 
+								if cnt > 30:
+									quit()
+								time.sleep(1)
+###########################								
 					except Exception as e:
 						print(e)
 						quit()
 				# if for_cnt > 2:
 				# 	break
-	except Exception as e:
-		bot.sendMsg("bestSeller Exception ....... ")
+	except Exception as e:		
 		print(e)
-		#print("search sleep ... 10 sec")			
-		time.sleep(10)
+		
 		
 
 	
