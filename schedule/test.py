@@ -22,7 +22,7 @@ print("FULL_PATH : ",FULL_PATH2)
 
 print("############################## FULL_PATH")
 print(os.path.isdir(FULL_PATH))
-for wa in os.walk(FULL_PATH)
+for wa in os.walk(FULL_PATH):
 	file = wa[2]
 	file_cnt = len(wa[2])
 	print(file," - ",str(file_cnt))
