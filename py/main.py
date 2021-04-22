@@ -249,9 +249,7 @@ if __name__  == "__main__":
 ############################
 								bookManaOrderInsert(prdNo)
 								review_list = ParkReview().get(prdNo)
-								make_book.create_book(bfo,review_list,cnt )
-								if cnt > 3:
-									quit()
+								make_book.create_book(bfo,review_list, for_cnt, cnt )								
 ############################
 
 								# bookInsert(bfo)
