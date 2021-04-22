@@ -48,9 +48,16 @@ try:
 
 
 	PARK_API_KEY = os.getenv('PARK_API_KEY')
-	NV_API_CID = NV_CENTER_API.split("|")[0]
-	NV_API_SID = NV_CENTER_API.split("|")[1]
+	print(1)
+	nvc_api = NV_CENTER_API
+	nv_api_arr = nvc_api.split("|")
+	print(nv_api_arr[0])
+	print(nv_api_arr[1])
+	NV_API_CID = nv_api_arr[0]
+	NV_API_SID = nv_api_arr[1]
+	print(2)
 	dbinfo = os.getenv(DB_INFO).split("|")
+	print(3)
 	host=dbinfo[0]
 	user=dbinfo[1]
 	pw 	=dbinfo[2]
