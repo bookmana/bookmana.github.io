@@ -1,5 +1,5 @@
 name: BookMana action
-#on: [push]
+on: [push]
     
 #  schedule:
 #  - cron: "5,14,26,38,53 * * * *"
