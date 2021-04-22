@@ -1,7 +1,9 @@
 name: Pylint
 
-on: [push]
-
+#on: [push]
+on:
+  schedule:
+    - cron: '5 * * * *'
 jobs:
   build:
     name: build
@@ -37,6 +39,7 @@ jobs:
       
     - name: clone static_site_repo
       run: |
+        cd ..
         mkdir static_site_repo              
         git clone git@github.com:bookmana/bookmana.github.io.git static_site_repo
 
