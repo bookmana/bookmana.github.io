@@ -33,6 +33,6 @@ content="hellow python"
 now = datetime.datetime.now()	
 
 file_path = """%s/%s-%s.md""" %(FULL_PATH,now.strftime('%Y-%m-%d'),'1234567')
-f = open(file_path ,'w', encoding='utf8')
+#f = open(file_path ,'w', encoding='utf8')
 #f = open("./_posts/%s-%s.md"%(now.strftime('%Y-%m-%d'),isbn_no) ,'w', encoding='utf8')
-f.write(content)
+#f.write(content)
