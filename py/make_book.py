@@ -76,6 +76,10 @@ description: %s
 			reg_nm = review['reg_nm']
 			reg_dt = review['reg_dt']
 			comment = review['comment']
+			
+			if comment.find("배송") > -1 or comment.find("주문") > -1:
+				continue
+
 			rv_comment+="""%s %s %s %s <br/>""" %( star,reg_nm,comment, reg_dt)
 	
 	content = content+rv_comment
