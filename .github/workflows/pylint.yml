@@ -1,8 +1,8 @@
 name: bookmana action
-
-on:
-  schedule:
-  - cron: "25 0-23 * * *"
+on: [push]
+#on:
+#  schedule:
+#  - cron: "25 0-23 * * *"
 
 jobs:
   build:
