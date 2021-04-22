@@ -9,7 +9,7 @@
 #--------------------------
 title: BookMana BLOG                        # the main title
 
-tagline: 도서/책 소개 블로그  # it will display as the sub-title
+tagline:  # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   도서/책 소개 블로그
