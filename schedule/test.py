@@ -17,7 +17,7 @@ print("############################## BASE_DIR")
 print("BASE_DIR : ",BASE_DIR)
 print("TARGET_DIR : ",TARGET_DIR)
 print("FULL_PATH : ",FULL_PATH)
-print("FULL_PATH : ",FULL_PATH2)
+
 
 
 print("############################## FULL_PATH")
