@@ -1,3 +1,5 @@
+import ask_db
+import ask_util
 import datetime
 import os
 
@@ -42,10 +44,22 @@ print("===========================")
 try:
 	NV_CENTER_API = os.getenv('NV_CENTER_API')
 	PARK_API_KEY = os.getenv('PARK_API_KEY')
-	DB_INFO  = os.getenv('DB_INFO')
-	print("NV_CENTER_API : ",NV_CENTER_API)
-	print("PARK_API_KEY : ",PARK_API_KEY)
-	print("DB_INFO : ",DB_INFO)
+	DB_INFO  = os.getenv(DB_INFO)
+
+
+	PARK_API_KEY = os.getenv('PARK_API_KEY')
+	NV_API_CID = NV_CENTER_API.split("|")[0]
+	NV_API_SID = NV_CENTER_API.split("|")[1]
+	dbinfo = os.getenv(DB_INFO).split("|")
+	host=dbinfo[0]
+	user=dbinfo[1]
+	pw 	=dbinfo[2]
+	db 	=dbinfo[3]
+	
 	
 except Exception as e:
 	print(" e: ",e)
+
+ad = ask_db.AskDb(host, user, pw, db)
+cnt = ad.selectOne(""" SELECT COUNT(*) FROM BOOK_MANA_ORDER WHERE PRD_NO ='%s' """ % prdNo)[0]
+print(cnt)
