@@ -243,6 +243,12 @@ def repl_excp(repl_text):
 	if repl_text.find('’') > -1:
 		rd_max_cnt = repl_text.count("’")
 		repl_text = repl_text.replace("’","",rd_max_cnt)
+	if repl_text.find('『') > -1:
+		rd_max_cnt = repl_text.count("『")
+		repl_text = repl_text.replace("『","",rd_max_cnt)
+	if repl_text.find('』') > -1:
+		rd_max_cnt = repl_text.count("』")
+		repl_text = repl_text.replace("』","",rd_max_cnt)	
 		
 	if repl_text.find('°') > -1:
 		rd_max_cnt = repl_text.count("°")
