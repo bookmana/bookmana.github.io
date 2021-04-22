@@ -2,8 +2,10 @@
 #  schedule:
 #  - cron: "5,14,26,38,53 * * * *"
 on:
-    schedule:
-    - cron: "1,10,20,30,40,50 * * * *"
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '1,10,20,30,40,50 * * * *'
+
 
 jobs:
   build:
