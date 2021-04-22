@@ -44,8 +44,8 @@ def create_book(bfo, review_list, row):
 title: "%s"
 date: %s
 categories: [%s, %s]
-img_url: %s
-desc: %s
+image: %s
+description: %s
 ---
 
 ## **정보**
