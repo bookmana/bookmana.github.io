@@ -48,20 +48,18 @@ try:
 
 
 	PARK_API_KEY = os.getenv('PARK_API_KEY')
-	print(1)
-	nvc_api = NV_CENTER_API
-	nv_api_arr = nvc_api.split("|")
-	print(nv_api_arr[0])
-	print(nv_api_arr[1])
+	print(1)	
+	nv_api_arr = NV_CENTER_API.split("|")	
 	NV_API_CID = nv_api_arr[0]
 	NV_API_SID = nv_api_arr[1]
 	print(2)
-	dbinfo = os.getenv(DB_INFO).split("|")
+	
+	dbinfo_arr = DB_INFO.split("|")
 	print(3)
-	host=dbinfo[0]
-	user=dbinfo[1]
-	pw 	=dbinfo[2]
-	db 	=dbinfo[3]
+	host=dbinfo_arr[0]
+	user=dbinfo_arr[1]
+	pw 	=dbinfo_arr[2]
+	db 	=dbinfo_arr[3]
 	
 	
 except Exception as e:
