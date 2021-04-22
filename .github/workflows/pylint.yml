@@ -64,8 +64,7 @@ jobs:
       run: |
         cd ../static_site_repo
         ls
-        pwd
-        touch aaa.txt
+        pwd        
         git add --all
         git commit -m "autocommit"
         ls
