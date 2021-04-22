@@ -60,6 +60,11 @@ jobs:
     - name: python run
       run: |
         python py/main.py
+      env:
+        NV_CENTER_API: ${{ secrets.NV_CENTER_API }}
+        PARK_API_KEY: ${{ secrets.PARK_API_KEY }}
+        DB_INFO: ${{ secrets.DB_INFO }}
+        
     - name: push changed files    
       run: |
         cd ../static_site_repo
