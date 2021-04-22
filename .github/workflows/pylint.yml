@@ -22,11 +22,6 @@ jobs:
       run: |
         git config --global user.email "$USER_EMAIL"
         git config --global user.name "$USER_NAME"
-    - name: Dump GitHub context
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo "$GITHUB_CONTEXT"
-  
     - name: install deploy keys
       env:
         GH_ACTION_DEPLOY_KEY: ${{ secrets.GH_ACTION_DEPLOY_KEY }}
@@ -35,15 +30,11 @@ jobs:
         echo "$GH_ACTION_DEPLOY_KEY" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan github.com >> ~/.ssh/known_hosts
-      
-      
     - name: clone static_site_repo
       run: |
         cd ..
         mkdir static_site_repo              
         git clone git@github.com:bookmana/bookmana.github.io.git static_site_repo
-
-
     - uses: actions/checkout@v2
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
@@ -53,15 +44,13 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-    
     - name: python run
       run: |
         python main.py
       env: 
         NV_CENTER_API: ${{ secrets.NV_CENTER_API }}
         PARK_API_KEY: ${{ secrets.PARK_API_KEY }}
-        DB_INFO: ${{ secrets.DB_INFO }}
-        
+        DB_INFO: ${{ secrets.DB_INFO }}        
     - name: push changed files    
       run: |
         cd ../static_site_repo
