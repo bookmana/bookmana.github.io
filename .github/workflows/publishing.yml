@@ -2,6 +2,7 @@
 on:
   push:
     branches: [ master ]
+    
 #  schedule:
 #  - cron: "5,14,26,38,53 * * * *"
 
