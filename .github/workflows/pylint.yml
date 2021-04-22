@@ -1,9 +1,7 @@
 name: Pylint
 
-#on: [push]
-on:
-  schedule:    
-    - cron: '5 * * * *'
+on: [push]
+
 jobs:
   build:
     name: build
@@ -67,6 +65,5 @@ jobs:
         git add --all
         git commit -m "autocommit"        
         git push -u origin main
-#        git push -u origin master
         
  
