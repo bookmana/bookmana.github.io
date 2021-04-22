@@ -146,11 +146,11 @@ if __name__  == "__main__":
 			inter_catId = ic
 			print("inter_catId : ",inter_catId)			
 			xtree = interParkBestSeller(inter_catId)
-			book_cd1 = book_code[inter_catId]
+			book_cd2 = book_code[inter_catId]
 			if inter_catId[:1]=='1':
-				book_cd2 = "국내도서"
+				book_cd1 = "국내도서"
 			else:
-				book_cd2 = "외국도서"
+				book_cd1 = "외국도서"
 
 			if xtree:				
 				for node in xtree.findall('item'):
