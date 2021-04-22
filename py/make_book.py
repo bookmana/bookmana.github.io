@@ -86,7 +86,7 @@ description: %s
 	content = content+rv_comment
 
 	#print(content)
-	file_path ="D:/gitpage_project/bookmana_action-main/_posts/%s-%s.md"%(now.strftime('%Y-%m-%d'),isbn_no)
+	file_path ="D:/gitpage_project/bookmana_action-main/_posts/%s-%s.md"%(now.strftime('%Y-%m-%d'),prd_no)
 	file_path = """%s/%s-%s.md""" %(FULL_PATH,now.strftime('%Y-%m-%d'),isbn_no)
 	f = open(file_path ,'w', encoding='utf8')
 	f.write(content)
