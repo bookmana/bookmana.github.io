@@ -24,21 +24,6 @@ def create_book(bfo, review_list, row):
 	pub_dt 			= bfo['PUB_DT']
 	book_cd1		= bfo['BOOK_CD1']
 	book_cd2		= bfo['BOOK_CD2']
-	
-
-	print('prd_no : ',prd_no)
-	print('book_nm : ',book_nm)
-	print('price : ',price)
-	print('book_desc : ',book_desc)
-	print('book_desc2 : ',book_desc2)
-	print('book_img_l_url : ',book_img_l_url)
-	print('book_img_s_url : ',book_img_s_url)
-	print('author : ',author)
-	print('isbn_no : ',isbn_no)
-	print('category_id : ',category_id)
-	print('category_nm : ',category_nm)
-	print('pub_sr : ',pub_sr)
-	print('pub_dt : ',pub_dt)
 
 	content = """---
 title: "%s"
