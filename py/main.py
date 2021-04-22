@@ -192,11 +192,11 @@ if __name__  == "__main__":
 							description = ask_util.getSqlReplace(description)
 							description2 = ask_util.getSqlReplace(description2)							
 
-								bfo = {"PRD_NO":prdNo,"BOOK_NM":book_nm,"PRICE":price,"BOOK_DESC":description,"BOOK_DESC2":description2,"BOOK_IMG_L_URL":coverLargeUrl,
-								"BOOK_IMG_S_URL":coverSmallUrl,"AUTHOR":author,"ISBN_NO":isbn,
-								"CATEGORY_ID":ic,"CATEGORY_NM":categoryName,"PUB_SR":publisher,"PUB_DT":pubDate,
-								"BOOK_CD1":book_cd1,"BOOK_CD2":book_cd2
-								}							
+							bfo = {"PRD_NO":prdNo,"BOOK_NM":book_nm,"PRICE":price,"BOOK_DESC":description,"BOOK_DESC2":description2,"BOOK_IMG_L_URL":coverLargeUrl,
+							"BOOK_IMG_S_URL":coverSmallUrl,"AUTHOR":author,"ISBN_NO":isbn,
+							"CATEGORY_ID":ic,"CATEGORY_NM":categoryName,"PUB_SR":publisher,"PUB_DT":pubDate,
+							"BOOK_CD1":book_cd1,"BOOK_CD2":book_cd2
+							}							
 
 							cnt+=1
 							print("cnt : ",str(cnt))
