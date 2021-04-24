@@ -327,7 +327,16 @@ def repl_excp(repl_text):
 	if repl_text.find('.<br/>.<br/>.<br/>.<br/>') > -1:
 		rd_max_cnt = repl_text.count(".<br/>.<br/>.<br/>.<br/>")
 		repl_text = repl_text.replace(".<br/>.<br/>.<br/>.<br/>","",rd_max_cnt)
-				
+	if repl_text.find('#') > -1:
+		rd_max_cnt = repl_text.count("#")
+		repl_text = repl_text.replace("#","",rd_max_cnt)		
+	if repl_text.find(';') > -1:
+		rd_max_cnt = repl_text.count(";")
+		repl_text = repl_text.replace(";","",rd_max_cnt)		
+	if repl_text.find('&') > -1:
+		rd_max_cnt = repl_text.count("&")
+		repl_text = repl_text.replace("&","",rd_max_cnt)	
+		
 	return repl_text
 
 def isStrEqual(str1, str2):		
