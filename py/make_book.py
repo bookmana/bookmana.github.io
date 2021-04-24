@@ -66,7 +66,7 @@ description: %s
 ------
 
 
-""" %  (book_nm, "{} {}".format(now.strftime('%Y-%m-%d %H:%M:%S'),"+0900"), book_cd1, book_cd2, book_img_l_url, ' '.join(book_desc[:160].split()) ,isbn_no ,pub_sr, pub_dt, author, book_desc, book_desc2, book_nm)
+""" %  (book_nm, now.strftime('%Y-%m-%d %H:%M:%S'), book_cd1, book_cd2, book_img_l_url, ' '.join(book_desc[:160].split()) ,isbn_no ,pub_sr, pub_dt, author, book_desc, book_desc2, book_nm)
 	#print(content)
 
 	rv_comment =""
