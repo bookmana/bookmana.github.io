@@ -87,7 +87,7 @@ def interParkBestSeller(catId):
 	return xtree	
 
 def bookManaOrderInsert(prdNo):
-	sqlId = """ INSERT INTO BOOK_MANA_ORDER VALUES('%s')""" %(prdNo)
+	sqlId = """ INSERT INTO BOOK_MANA_ORDER VALUES('%s',NOW())""" %(prdNo)
 	#print(sqlId)
 	ad.insert(sqlId)
 
@@ -204,14 +204,14 @@ if __name__  == "__main__":
 							}							
 
 							cnt+=1
-							print("cnt : ",str(cnt))
+							print("cnt : ",str(cnt)," PRD_NO : ",prdNo)
 							bookManaOrderInsert(prdNo)
 							review_list = ParkReview().get(prdNo)
 							make_book.create_book(bfo,review_list, for_cnt, cnt ) 
 							if cnt > 50:
 								quit()
 							#time.sleep(1)
-						print("5")
+						#print("5")
 					except Exception as e:
 						print(e)
 											
