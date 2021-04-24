@@ -7,7 +7,7 @@ FULL_PATH = "{}{}".format(BASE_DIR, TARGET_DIR)
 
 def create_book(bfo, review_list,m_row, s_row):
 	now = datetime.datetime.now()
-	now = now+datetime.timedelta(minutes=(m_row*s_row*5))		
+	now = now+datetime.timedelta(minutes=(s_row*5))		
 	prd_no 			= bfo['PRD_NO']
 	book_nm 		= bfo['BOOK_NM']
 	price 			= bfo['PRICE']
