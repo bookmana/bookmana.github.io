@@ -11,21 +11,14 @@ jobs:
     strategy:
       matrix:
         python-version: [3.8]
-
+        
     steps:               
     - name: bookmana blog
       uses: actions/checkout@master
     - name: git config
-      env:
-        USER_NAME: ${{ github.event.pusher.name }}
-        USER_EMAIL: ${{ github.event.pusher.email }}
       run: |
-        git config --global user.email "$USER_EMAIL"
-        git config --global user.name "$USER_NAME"
-    - name: Dump GitHub context
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo "$GITHUB_CONTEXT"
+        git config --global user.email "bookmanager39@gmail.com"
+        git config --global user.name "bookmana"
   
     - name: install deploy keys
       env:
