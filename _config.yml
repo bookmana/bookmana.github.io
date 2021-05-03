@@ -150,8 +150,8 @@ sitemap_exclude:  # Sitemap will exclude the following items.
     - /assets/
   accurate:
     - /norobots/
-    - /tabs/
-    - /categories/
+    #- /tabs/
+    #- /categories/
     # - /tags/
     - /posts/
     - 404.html
