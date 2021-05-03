@@ -61,19 +61,7 @@ layout: default
         {% endif %}
       </div>
 
-      <div class="post-tail text-muted">
-        <!-- Tags -->
-        {% if page.tags.size > 0 %}
-        <div class="mb-4">
-          {% for tag in page.tags %}
-          <a href="{{ site.baseurl }}/tags/{{ tag | replace: ' ', '-' | downcase | url_encode }}/"
-            class="post-tag no-text-decoration" >
-            {{- tag -}}
-          </a>
-          {% endfor %}
-          </div>
-        {% endif %}
-      </div><!-- div.post-tail -->
+   
 
     </div> <!-- .post -->
   </div> <!-- #post-wrapper -->
@@ -108,14 +96,6 @@ layout: default
         </a>
       </div> <!-- div.post-navigation -->
 
-  <!--     <script src="https://utteranc.es/client.js"
-      repo="bookmana/bookmana.github.io"
-      issue-term="pathname"
-      theme="github-light"
-      crossorigin="anonymous"
-      async>
-      </script>
- -->
     </div> <!-- .pl-1 pr-1 -->
 
   </div> <!-- #post-extend-wrapper -->
