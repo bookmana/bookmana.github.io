@@ -1,6 +1,5 @@
 ---
 # Aggregation of common JS.
-# © 2018-2019 Cotes Chung
 # MIT License
 ---
 
