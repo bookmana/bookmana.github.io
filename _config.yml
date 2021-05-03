@@ -117,7 +117,7 @@ defaults:
   #       -
   #         label: Tags
   #         url: /tabs/tags/
-   -
+  -
     scope:
       path: categories
     values:
