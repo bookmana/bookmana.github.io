@@ -144,6 +144,8 @@ exclude:
   - Gemfile
   - tools
   - docs
+  - py  
+  
 
 sitemap_exclude:  # Sitemap will exclude the following items.
   fuzzy:
