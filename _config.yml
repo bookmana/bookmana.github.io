@@ -167,7 +167,9 @@ exclude:
   - docs
   - py  
   
-
+plugins:
+  - jekyll-sitemap
+  
 sitemap_exclude:  # Sitemap will exclude the following items.
   fuzzy:
     - /assets/
@@ -183,5 +185,4 @@ sitemap_exclude:  # Sitemap will exclude the following items.
     - robots.txt
     - redirects.json
 
-plugins:
-  - jekyll-sitemap
+
