@@ -178,11 +178,11 @@ sitemap_exclude:  # Sitemap will exclude the following items.
     #- /tabs/
     #- /categories/
     # - /tags/
-    - /posts/
+    #- /posts/
     - 404.html
     - feed.xml
     #- sitemap.xml
-    - robots.txt
+    #- robots.txt
     - redirects.json
 
 
