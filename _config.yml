@@ -43,7 +43,7 @@ google_site_verification: google_site_verification # change to your verification
 #--------------------------
 
 # if your site type is Project Pages site, change below value to '/projectname'
-baseurl: 'https://github.com/bookmana'
+baseurl: ''
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
 timezone: Asia/Seoul
