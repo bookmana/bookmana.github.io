@@ -15,6 +15,10 @@ def create_book(bfo, review_list, s_row):
 	# book_desc2 		= bfo['BOOK_DESC2']
 	book_img_l_url  = bfo['BOOK_IMG_L_URL']
 	book_img_s_url  = bfo['BOOK_IMG_S_URL']
+	link_k  		= bfo['LINK_K']
+	link_n  		= bfo['LINK_N']
+	link_c  		= bfo['LINK_C']
+	
 
 	try:
 		book_img_l_url = book_img_l_url.replace("http:","https:")
@@ -32,35 +36,38 @@ def create_book(bfo, review_list, s_row):
 	book_cd2		= bfo['BOOK_CD2']
 
 	content = f'''---
-				title: {book_nm}
-				date: {now.strftime('%Y-%m-%d %H:%M:%S')}
-				categories: [{book_cd1} {book_cd2}]
-				image: {book_img_l_url}
-				description: {book_desc[:50]}...
-				---
+title: "{book_nm}"
+date: {now.strftime('%Y-%m-%d %H:%M:%S')}
+categories: [{book_cd1} {book_cd2}]
+image: {book_img_l_url}
+description: {book_desc[:50]}...
+---
 
-				## **정보**
+## **정보**
 
-				- **ISBN : {isbn_no}**
-				- **출판사 : {pub_sr}**
-				- **출판일 : {pub_dt}**
-				- **저자 : {author}**
+- **ISBN : {isbn_no}**
+- **출판사 : {pub_sr}**
+- **출판일 : {pub_dt}**
+- **저자 : {author}**
 
-				------
-
-
-
-				## **요약**
-
-				{book_desc}
-
-				------
-
-				#{book_nm}
+------
 
 
 
-				'''
+## **요약**
+
+{book_desc}
+
+------
+
+#{book_nm}
+
+[ 도서 구매 바로가기  [쿠팡]({link_c}) /  [교보문고]({link_k})  /  [네이버]({link_n})  ]
+[쿠팡]:{link_c}
+[교보문고]:{link_k}
+[네이버]:{link_n}
+
+'''
 	#print(content)
 
 	rv_comment =""
