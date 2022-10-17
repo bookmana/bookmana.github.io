@@ -40,7 +40,6 @@ title: "{book_nm}"
 date: {now.strftime('%Y-%m-%d %H:%M:%S')}
 categories: [{book_cd1} {book_cd2}]
 image: {book_img_l_url}
-description: {book_desc[:50]}...
 ---
 
 ## **정보**
@@ -62,14 +61,8 @@ description: {book_desc[:50]}...
 
 #{book_nm}
 
-[ 도서 구매 바로가기  [쿠팡]({link_c}) /  [교보문고]({link_k})  /  [네이버]({link_n})  ]
-[쿠팡]:{link_c}
-[교보문고]:{link_k}
-[네이버]:{link_n}
-
+[ 도서 구매 바로가기 ]({link_c}) [쿠팡]({link_c}) /  [교보문고]({link_k})  /  [네이버]({link_n})
 '''
-	#print(content)
-
 	rv_comment =""
 	if len(review_list) > 0:
 		rv_comment = """## **리뷰** \n\n"""		
