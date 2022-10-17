@@ -151,8 +151,10 @@ if __name__ == '__main__':
 				make_book.create_book(bfo, review_list, cnt ) 
 			else:
 				bookManaOrderInsert(isbn)		
-				# if cnt > 2:
-				# 	quit()
+			
+			if cnt > 3:
+				quit()
+							
 			time.sleep(1)
 	except Exception as e:
 		print("e99 : ",e)
