@@ -114,7 +114,7 @@ if __name__ == '__main__':
 			book_nm 			= custUtil(i, 'cmdtName') #"cmdtName": "트렌드 코리아 2023",
 			desc 				= f'''● {custUtil(i, 'inbukCntt')}''' 
 			author 				= custUtil(i, 'chrcName') #"chrcName": "김난도 외",	
-			link_k 				= f'''https://product.kyobobook.co.kr/detail/{saleCmdtClstName}'''
+			link_k 				= f'''https://product.kyobobook.co.kr/detail/{saleCmdtid}'''
 			translator 			= ''
 			categoryName 		= ''
 			publisher 			= custUtil(i, 'pbcmName')
