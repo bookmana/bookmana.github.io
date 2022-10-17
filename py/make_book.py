@@ -17,7 +17,7 @@ def create_book(bfo, review_list, s_row):
 	book_img_s_url  = bfo['BOOK_IMG_S_URL']
 	link_k  		= bfo['LINK_K']
 	link_n  		= bfo['LINK_N']
-	link_c  		= bfo['LINK_C']
+	# link_c  		= bfo['LINK_C']
 	
 
 	try:
@@ -61,7 +61,7 @@ image: {book_img_l_url}
 
 #{book_nm}
 
-[ 도서 구매 바로가기 ]({link_c}) [쿠팡]({link_c}) /  [교보문고]({link_k})  /  [네이버]({link_n})
+[ 도서 구매 바로가기   [교보문고]({link_k})  /  [네이버]({link_n}) ]
 '''
 	rv_comment =""
 	if len(review_list) > 0:
