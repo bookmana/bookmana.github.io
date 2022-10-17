@@ -61,7 +61,7 @@ image: {book_img_l_url}
 
 #{book_nm}
 
-[ 도서 구매 바로가기   [교보문고]({link_k})  /  [네이버]({link_n}) ]
+
 '''
 	rv_comment =""
 	if len(review_list) > 0:
