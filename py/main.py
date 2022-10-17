@@ -88,7 +88,8 @@ def custUtil(f, nm):
 		return ' '
 
 def kBestInfo(url):			
-	res  = requests.get(url, timeout=5)	
+	res  = requests.get(url, timeout=5)
+	print(res)
 	return res.json()
 
 
