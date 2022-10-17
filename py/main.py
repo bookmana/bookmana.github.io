@@ -152,9 +152,9 @@ if __name__ == '__main__':
 			else:
 				bookManaOrderInsert(isbn)		
 			
-			if cnt > 3:
+			if cnt > 30:
 				quit()
-							
+
 			time.sleep(1)
 	except Exception as e:
 		print("e99 : ",e)
