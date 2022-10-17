@@ -5,14 +5,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 TARGET_DIR = "/static_site_repo/_posts"
 FULL_PATH = "{}{}".format(BASE_DIR, TARGET_DIR)
 
-def create_book(bfo, review_list,m_row, s_row):
+def create_book(bfo, review_list, s_row):
 	now = datetime.datetime.now()
 	now = now+datetime.timedelta(minutes=(s_row*5))		
-	prd_no 			= bfo['PRD_NO']
+	# prd_no 			= bfo['PRD_NO']
 	book_nm 		= bfo['BOOK_NM']
 	price 			= bfo['PRICE']
 	book_desc 		= bfo['BOOK_DESC']
-	book_desc2 		= bfo['BOOK_DESC2']
+	# book_desc2 		= bfo['BOOK_DESC2']
 	book_img_l_url  = bfo['BOOK_IMG_L_URL']
 	book_img_s_url  = bfo['BOOK_IMG_S_URL']
 
@@ -24,49 +24,43 @@ def create_book(bfo, review_list,m_row, s_row):
 		
 	author 			= bfo['AUTHOR']
 	isbn_no 		= bfo['ISBN_NO']
-	category_id 	= bfo['CATEGORY_ID']
-	category_nm 	= bfo['CATEGORY_NM']
+	# category_id 	= bfo['CATEGORY_ID']
+	# category_nm 	= bfo['CATEGORY_NM']
 	pub_sr 			= bfo['PUB_SR']
 	pub_dt 			= bfo['PUB_DT']
 	book_cd1		= bfo['BOOK_CD1']
 	book_cd2		= bfo['BOOK_CD2']
 
-	content = """---
-title: "%s"
-date: %s
-categories: [%s, %s]
-image: %s
-description: %s
----
+	content = f'''---
+				title: {book_nm}
+				date: {now.strftime('%Y-%m-%d %H:%M:%S')}
+				categories: [{book_cd1} {book_cd2}]
+				image: {book_img_l_url}
+				description: {book_desc[:50]}...
+				---
 
-## **정보**
+				## **정보**
 
-- **ISBN : %s**
-- **출판사 : %s**
-- **출판일 : %s**
-- **저자 : %s**
+				- **ISBN : {isbn_no}**
+				- **출판사 : {pub_sr}**
+				- **출판일 : {pub_dt}**
+				- **저자 : {author}**
 
-------
-
-
-
-## **요약**
-
-%s
-
-------
-
-%s
-
-------
+				------
 
 
-%s 
 
-------
+				## **요약**
+
+				{book_desc}
+
+				------
+
+				#{book_nm}
 
 
-""" %  (book_nm, now.strftime('%Y-%m-%d %H:%M:%S'), book_cd1, book_cd2, book_img_l_url, ' '.join(book_desc[:160].split()) ,isbn_no ,pub_sr, pub_dt, author, book_desc, book_desc2, book_nm)
+
+				'''
 	#print(content)
 
 	rv_comment =""
@@ -86,6 +80,7 @@ description: %s
 	content = content+rv_comment
 
 	#print(content)	
-	file_path = """%s/%s-%s.md""" %(FULL_PATH,now.strftime('%Y-%m-%d'),prd_no)
+	file_path = f'''{FULL_PATH}/{now.strftime('%Y-%m-%d')}-{isbn_no}.md'''
+	print("file_path : ",file_path)
 	f = open(file_path ,'w', encoding='utf8')
 	f.write(content)
