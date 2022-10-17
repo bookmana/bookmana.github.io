@@ -85,7 +85,11 @@ print(s.find('ISBN')==1)
 print(s.find('ISBN')== -1)
 if s.find('ISBN') > -1:	
 	isbn = bookDetailData.select("div.basic_info tr td")[0].text
-	print("isbn : ",isbn)
+	isbn = isbn[:isbn.find('(')]
+	intro_text = (bookDetailData.select("div.intro_bottom div.info_text")[1].text).strip()
+	print(isbn)
+	print(intro_text)
+
 # print(s)
 # print(s.select('tr'))
 # product_detail_area basic_info
