@@ -78,9 +78,6 @@ def naverBookSearch(isbn):
 		raise e
 
 
-
-
-
 def custUtil(f, nm):	
 	try:
 		return f[nm]
@@ -135,30 +132,7 @@ if __name__ == '__main__':
 			link_c 				= ''
 			book_cd2 			= saleCmdtClstName
 
-			# print("descItem : ",descItem)	
-			
-			print("book_cd1 : ",book_cd1)
-			print(f' saleCmdtid :  {saleCmdtid}')
-			print(f' saleCmdtDvsnCode :  {saleCmdtDvsnCode}')
-			print(f' saleCmdtClstName :  {saleCmdtClstName}')
-			print(f' book_nm :  {book_nm}')
-			print(f' description :  {description}')
-			print(f' coverLargeUrl :  {coverLargeUrl}')
-			print(f' coverSmallUrl :  {coverSmallUrl}')
-			print(f' author :  {author}')
-			print(f' isbn :  {isbn}')
-			print(f' link_k :  {link_k}')
-			print(f' link_n :  {link_n}')
-			print(f' link_c :  {link_c}')
-			print(f' translator :  {translator}')
-			print(f' categoryName :  {categoryName}')
-			print(f' publisher :  {publisher}')
-			print(f' pubDate :  {pubDate}')
-			print(f' price :  {price}')
-			print(f' price2 :  {price2}')
-			print(f' rwcnt :  {rwcnt}')
-			# print(f' description2 :  {description2}')
-			print("===========================")
+			# print("descItem : ",descItem)				
 			
 			if description and author and isbn and coverLargeUrl:
 				book_nm = ask_util.getSqlReplace(book_nm)
@@ -166,7 +140,8 @@ if __name__ == '__main__':
 				description = ask_util.repl_excp(description)		
 
 				bfo = {"BOOK_NM":book_nm,"PRICE":price,"BOOK_DESC":description,"BOOK_IMG_L_URL":coverLargeUrl,
-				"BOOK_IMG_S_URL":coverSmallUrl,"AUTHOR":author,"ISBN_NO":isbn,"PUB_SR":publisher,"PUB_DT":pubDate,"BOOK_CD1":book_cd1,"BOOK_CD2":book_cd2
+				"BOOK_IMG_S_URL":coverSmallUrl,"AUTHOR":author,"ISBN_NO":isbn,"PUB_SR":publisher,"PUB_DT":pubDate,"BOOK_CD1":book_cd1,"BOOK_CD2":book_cd2,
+				"LINK_K":link_k,"LINK_N":link_n,"LINK_C":link_c
 				}							
 				
 				print("cnt : ", str(cnt)," ISBN_NO : ",isbn)
@@ -178,10 +153,6 @@ if __name__ == '__main__':
 				bookManaOrderInsert(isbn)		
 				# if cnt > 2:
 				# 	quit()
-
-
-			quit()
-
 			time.sleep(1)
 	except Exception as e:
 		print("e99 : ",e)
