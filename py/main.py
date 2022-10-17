@@ -141,7 +141,7 @@ if __name__ == '__main__':
 
 				bfo = {"BOOK_NM":book_nm,"PRICE":price,"BOOK_DESC":description,"BOOK_IMG_L_URL":coverLargeUrl,
 				"BOOK_IMG_S_URL":coverSmallUrl,"AUTHOR":author,"ISBN_NO":isbn,"PUB_SR":publisher,"PUB_DT":pubDate,"BOOK_CD1":book_cd1,"BOOK_CD2":book_cd2,
-				"LINK_K":link_k,"LINK_N":link_n,"LINK_C":link_c
+				"LINK_K":link_k,"LINK_N":link_n
 				}							
 				
 				print("cnt : ", str(cnt)," ISBN_NO : ",isbn)
