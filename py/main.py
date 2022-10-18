@@ -160,6 +160,8 @@ if __name__ == '__main__':
 					description2 = ask_util.repl_excp(ask_util.getSqlReplace(description2))
 					description3 = ask_util.repl_excp(ask_util.getSqlReplace(description3))
 				except Exception as e:
+					description2 = ask_util.repl_excp(ask_util.getSqlReplace(description2))
+					description3 = ask_util.repl_excp(ask_util.getSqlReplace(description3))
 					print("kbDetailInfoGet e ",e)
 
 					
