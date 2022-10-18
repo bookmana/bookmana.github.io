@@ -26,7 +26,7 @@
     </div>
   </div>
 
-  <ul class="nav flex-column">
+  <div class="nav flex-column">
   {% assign page_urls = page.url | split: "/" %}
 
   {% for item in site.data.label.tabs %}
@@ -39,18 +39,32 @@
       {% endif %}
     {% endif %}
 
-    <li class="nav-item d-flex justify-content-center
+    <span class="nav-item d-flex justify-content-center
       {% if item.url == page_urls.last or
         item.name == "Home" and page.layout == "home" %}active{% endif %}">
       <a href="{{ ref }}" class="nav-link d-flex justify-content-center align-items-center w-100">
         <i class="fa-fw {{ item.icon }} ml-3 mr-3 unloaded"></i>
         <span>{{ item.name | upcase }}</span>
       </a>
-    </li> <!-- .nav-item -->
+    </span> <!-- .nav-item -->
   {% endfor %}
 
-  </ul> <!-- ul.nav.flex-column -->
-
+  </div> <!-- ul.nav.flex-column -->
+<div>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3309468445717403"
+     crossorigin="anonymous"></script>
+<!-- left_center -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-3309468445717403"
+     data-ad-slot="6404062251"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>  
+  
+</div>
 </div><!-- #nav-wrapper -->
 
 <div class="contact d-flex justify-content-around mt-4">
