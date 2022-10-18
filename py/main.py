@@ -143,9 +143,8 @@ if __name__ == '__main__':
 			
 			
 			if description and author and isbn and coverLargeUrl:
-				book_nm = ask_util.getSqlReplace(book_nm)
-				description = ask_util.getSqlReplace(description)		
-				description = ask_util.repl_excp(description)		
+				book_nm = ask_util.getSqlReplace(book_nm)				
+				description = ask_util.repl_excp(ask_util.getSqlReplace(description))		
 
 				description2 =''
 				description3 =''
@@ -157,7 +156,9 @@ if __name__ == '__main__':
 						# print("description2 : ",description2)
 						# print("description3 : ",description3)
 						# print("==============")
-						break					
+						break
+					description2 = ask_util.repl_excp(ask_util.getSqlReplace(description2))
+					description3 = ask_util.repl_excp(ask_util.getSqlReplace(description3))
 				except Exception as e:
 					print("kbDetailInfoGet e ",e)
 
@@ -176,7 +177,7 @@ if __name__ == '__main__':
 					reviewInfo = kbInfo(f'https://product.kyobobook.co.kr/api/review/list?page=1&pageLimit=30&reviewSort=001&revwPatrCode=000&saleCmdtid={saleCmdtid}')
 					for info in reviewInfo['data']['reviewList']:
 						try:
-							review_list.append({"star":'',"reg_nm":f"{getAscii()}*******","reg_dt":info['cretDttm'],"comment":info['revwCntt']})
+							review_list.append({"star":'',"reg_nm":f"{getAscii()}*******","reg_dt":info['cretDttm'],"comment":ask_util.repl_excp(ask_util.getSqlReplace(info['revwCntt']))})
 						except Exception as e:
 							print("for e: ",e);
 						
