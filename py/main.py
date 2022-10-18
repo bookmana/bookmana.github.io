@@ -7,10 +7,13 @@ import json
 import requests
 import time
 import urllib.request
-import xml.etree.ElementTree as ET
 
-from urllib.parse import parse_qs
-from urllib.parse import urlparse
+import string
+import time
+
+from bs4 import BeautifulSoup
+
+import random
 
 # from inter_review import ParkReview
 
@@ -39,20 +42,6 @@ def bookManaOrderInsert(isbn):
 def isBookMana(isbn):
 	return ad.selectOne(""" SELECT COUNT(*) FROM BOOK_MANA_ORDER WHERE ISBN ='%s' """ % isbn)[0]
 	
-	
-# def bookreviewInsert(isbn):
-# 	review_list = ParkReview().get(isbn)
-# 	if len(review_list) > 0:
-# 		for review in review_list:
-# 			star = review['star']
-# 			reg_nm = review['reg_nm']
-# 			reg_dt = review['reg_dt']
-# 			comment = review['comment']
-# 			sqlId = """ INSERT INTO BOOK_DESC VALUES('%s',%s,'%s','%s','%s')""" %(isbn,star,reg_nm,reg_dt,comment)
-# 			#print(sqlId)
-# 			ad.insert(sqlId)
-
-
 
 #네이버 책검색
 def naverBookSearch(isbn):
@@ -84,9 +73,9 @@ def custUtil(f, nm):
 	except Exception as e:
 		return ' '
 
-def kBestInfo(url):			
+def kbInfo(url):			
 	res  = requests.get(url, timeout=25)	
-	print(res)
+	# print(res)
 	return res.json()
 
 
@@ -94,12 +83,21 @@ def getRandom():
     return random.randrange(1,5)    
 
 
+def kbDetailInfoGet(url):	
+	res  = requests.get(url, timeout=25)	
+	if res.status_code == 200:		
+		return BeautifulSoup(res.text, 'html.parser')	
+
+def getAscii():
+	return random.choice(string.ascii_lowercase) 	
+
 if __name__ == '__main__':	
-	v_page = getRandom()	
+	v_page = getRandom()
+	print("v_page : ",v_page)
 	url = f'https://product.kyobobook.co.kr/api/gw/pub/pdt/best-seller/online?page={v_page}&per=100&period=001&dsplDvsnCode=000&dsplTrgtDvsnCode=001'
 	ad = ask_db.AskDb(host, user, pw, db)
 	try:	
-		bookData = kBestInfo(url)
+		bookData = kbInfo(url)
 		cnt = 0
 		for i in bookData['data']['bestSeller']:
 			# print("i ",i)		
@@ -149,20 +147,46 @@ if __name__ == '__main__':
 				description = ask_util.getSqlReplace(description)		
 				description = ask_util.repl_excp(description)		
 
+				description2 =''
+				description3 =''
+				try:
+					soup = kbDetailInfoGet(f'https://product.kyobobook.co.kr/detail/{saleCmdtid}')
+					for item in soup.select('div.prod_detail_contents_inner'):					
+						description2 = item.select_one('div.book_publish_review p').text
+						description3 = item.select_one('div.book_inside p').text
+						# print("description2 : ",description2)
+						# print("description3 : ",description3)
+						# print("==============")
+						break					
+				except Exception as e:
+					print("kbDetailInfoGet e ",e)
+
+					
+
 				bfo = {"BOOK_NM":book_nm,"PRICE":price,"BOOK_DESC":description,"BOOK_IMG_L_URL":coverLargeUrl,
 				"BOOK_IMG_S_URL":coverSmallUrl,"AUTHOR":author,"ISBN_NO":isbn,"PUB_SR":publisher,"PUB_DT":pubDate,"BOOK_CD1":book_cd1,"BOOK_CD2":book_cd2,
-				"LINK_K":link_k,"LINK_N":link_n
+				"LINK_K":link_k,"LINK_N":link_n,"BOOK_DESC2":description2,"BOOK_DESC3":description3
 				}							
 				
 				print("cnt : ", str(cnt)," ISBN_NO : ",isbn)
 				bookManaOrderInsert(isbn)
 				# review_list = ParkReview().get(isbn)
 				review_list = []
+				try:					
+					reviewInfo = kbInfo(f'https://product.kyobobook.co.kr/api/review/list?page=1&pageLimit=30&reviewSort=001&revwPatrCode=000&saleCmdtid={saleCmdtid}')
+					for info in reviewInfo['data']['reviewList']:
+						try:
+							review_list.append({"star":'',"reg_nm":f"{getAscii()}*******","reg_dt":info['cretDttm'],"comment":info['revwCntt']})
+						except Exception as e:
+							print("for e: ",e);
+						
+				except Exception as e:
+					print("review list ",e)				
 				make_book.create_book(bfo, review_list, cnt ) 
 			else:
 				bookManaOrderInsert(isbn)		
 			
-			if cnt > 10:
+			if cnt > 20:
 				quit()
 
 			time.sleep(1)
@@ -171,5 +195,7 @@ if __name__ == '__main__':
 	finally:
 		ad.closeConn()
 		
+
+
 
 	#https://crontab.guru/
