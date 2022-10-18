@@ -12,6 +12,8 @@ def create_book(bfo, review_list, s_row):
 	book_nm 		= bfo['BOOK_NM']
 	price 			= bfo['PRICE']
 	book_desc 		= bfo['BOOK_DESC']
+	book_desc2 		= bfo['BOOK_DESC2']
+	book_desc3		= bfo['BOOK_DESC3']
 	# book_desc2 		= bfo['BOOK_DESC2']
 	book_img_l_url  = bfo['BOOK_IMG_L_URL']
 	book_img_s_url  = bfo['BOOK_IMG_S_URL']
@@ -55,7 +57,11 @@ image: {book_img_l_url}
 
 ## **요약**
 
+{book_desc2}
+
 {book_desc}
+
+{book_desc3}
 
 ------
 
@@ -64,6 +70,7 @@ image: {book_img_l_url}
 
 '''
 	rv_comment =""
+	print("len(review_list) : ",len(review_list))
 	if len(review_list) > 0:
 		rv_comment = """## **리뷰** \n\n"""		
 		for review in review_list:
@@ -75,7 +82,7 @@ image: {book_img_l_url}
 			if comment.find("배송") > -1 or comment.find("주문") > -1:
 				continue
 
-			rv_comment+="""%s %s %s %s <br/>""" %( star,reg_nm,comment, reg_dt)
+			rv_comment+=f'''  {reg_nm} {comment} {reg_dt} <br/>'''
 	
 	content = content+rv_comment
 
