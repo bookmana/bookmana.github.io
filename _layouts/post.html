@@ -33,9 +33,10 @@ layout: default
             {{ page.date | date: POST_DATE }}
             <i class="unloaded">{{ page.date | date_to_xmlschema }}</i>
           </span>
-          {% if page.categories.size > 0 %}on{% endif %}
+          { if page.categories.size > 0 %}on{% endif }
           {% for category in page.categories %}
-            <a href='{{ site.baseurl }}/categories/{{ category | replace: ' ', '-' | downcase | url_encode }}/'>{{ category }}</a>
+            <!-- <a href='{{ site.baseurl }}/categories/{{ category | replace: ' ', '-' | downcase | url_encode }}/'>{{ category }}</a> -->
+           {{ category }}
             {%- unless forloop.last -%}, {%- endunless -%}
           {% endfor %}
         </div>
