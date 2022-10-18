@@ -89,18 +89,20 @@ def kBestInfo(url):
 	print(res)
 	return res.json()
 
-#매도 퍼센트 2퍼 ~ 4퍼 랜덤
+
 def getRandom():
     return random.randrange(1,5)    
 
 
 if __name__ == '__main__':	
-	url = f'https://product.kyobobook.co.kr/api/gw/pub/pdt/best-seller/online?page={getRandom()}&per=100&period=001&dsplDvsnCode=000&dsplTrgtDvsnCode=001'
+	v_page = getRandom()	
+	url = f'https://product.kyobobook.co.kr/api/gw/pub/pdt/best-seller/online?page={v_page}&per=100&period=001&dsplDvsnCode=000&dsplTrgtDvsnCode=001'
 	ad = ask_db.AskDb(host, user, pw, db)
 	try:	
 		bookData = kBestInfo(url)
 		cnt = 0
-		for i in bookData['data']['bestSeller']:		
+		for i in bookData['data']['bestSeller']:
+			# print("i ",i)		
 			isbn 				= custUtil(i, 'cmdtCode') 
 			if isBookMana(isbn) > 0:
 				continue
@@ -121,18 +123,26 @@ if __name__ == '__main__':
 			pubDate 			= custUtil(i, 'rlseDate')					
 			price 				= custUtil(i, 'price')
 			price2 				= custUtil(i, 'sapr') #교보
-			rwcnt 		 		= custUtil(i, 'buyRevwRvgr') #평점
-			descItem 			= naverBookSearch(isbn)
-			description			=  f'''● {custUtil(descItem,'description')}'''  
-			if not description:
-				description = desc
-			coverLargeUrl 		= custUtil(descItem,'image')
-			coverSmallUrl 		= custUtil(descItem,'image')
-			link_n				= custUtil(descItem,'link')
+			rwcnt 		 		= custUtil(i, 'buyRevwRvgr') #평점			
+			coverLargeUrl 		= None
+						
+			try:
+				descItem 			= naverBookSearch(isbn)
+				description			=  f'''● {custUtil(descItem,'description')}'''  
+				if not description:
+					description = desc
+				coverLargeUrl 		= custUtil(descItem,'image')
+				coverSmallUrl 		= custUtil(descItem,'image')
+				link_n				= custUtil(descItem,'link')
+
+			except Exception as e:
+				description = desc			
+				print("nv e : ",e)
+			
 			link_c 				= ''
 			book_cd2 			= saleCmdtClstName
 
-			# print("descItem : ",descItem)				
+			
 			
 			if description and author and isbn and coverLargeUrl:
 				book_nm = ask_util.getSqlReplace(book_nm)
@@ -152,7 +162,7 @@ if __name__ == '__main__':
 			else:
 				bookManaOrderInsert(isbn)		
 			
-			if cnt > 30:
+			if cnt > 10:
 				quit()
 
 			time.sleep(1)
