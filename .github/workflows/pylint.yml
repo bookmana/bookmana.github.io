@@ -2,7 +2,7 @@ name: BookMana action
 #on: [push]
 on:    
   schedule:
-  - cron: "1 4 * * *"
+  - cron: "1 7 * * *"
 
 
 jobs:
