@@ -8,14 +8,11 @@ layout: compress
 
 <!DOCTYPE html>
 <html lang="en">
-
   {% include head.html %}
-
   <body data-spy="scroll" data-target="#toc">
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PXQZT83"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PXQZT83" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->    
     <div id="sidebar" class="d-flex flex-column">
       {% include sidebar.html %}
     </div>
@@ -25,21 +22,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         {% capture _content %}
           {{ content }}
         {% endcapture %}        
-        {% include fixlinenos.html %}
         {{ _content }}
-        {% include footer.html %}
+        <footer class="d-flex w-100 justify-content-center">
+          <div class="d-flex justify-content-between  align-items-center">
+            <div class="copyright">
+              {% assign first = site.first_run | plus: 0 %}
+              {% assign last = 'now' | date: "%Y" | plus: 0 %}
+              <p class="mb-0">
+                © {% if last > first %}{{ first }}-{% endif %}{{-last-}}
+                <a href="{{ site.social.links[0] }}" class="ml-1">{{ site.social.name }}</a>.
+                <br>Powered by <a href="https://jekyllrb.com" target="_blank">Jekyll</a>, theme by Chirpy.
+              </p>
+            </div>
+            <div class="license">
+              <p class="mb-0">The blog posts on this site are licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
+            </div>
+          </div>
+        </footer>
       </div>
       {% include search-results.html %}
     </div>
-
     <div id="mask"></div>
-
     <a id="back-to-top" href="#" class="btn btn-lg btn-box-shadow" role="button">
       <i class="fas fa-angle-up"></i>
     </a>
-
     {% include search-loader.html %}
-
   </body>
-
 </html> 

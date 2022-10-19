@@ -12,7 +12,7 @@ tabs:
 
 panel:
   lastmod: "Recent Update"
-  trending_tags: "Trending Tags"
+  # trending_tags: "Trending Tags"
   toc: "Contents"
 
 search_hint: "Search"   # text show on search bar

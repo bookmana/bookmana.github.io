@@ -40,12 +40,6 @@ layout: compress
       <name>{{ site.author }}</name>
     </author>
 
-  {% if post.categories %}
-    {% for category in post.categories %}
-    <category term="{{ category }}" />
-    {% endfor %}
-  {% endif %}
-
   {% if post.summary %}
     <summary>{{ post.summary | strip }}</summary>
   {% else %}

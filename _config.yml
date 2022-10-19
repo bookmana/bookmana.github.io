@@ -38,7 +38,7 @@ social:
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
 
-google_site_verification: google_site_verification # change to your verification string
+google_site_verification: DYQpMTHXfBUfWZqoUASdc9lI8q_-bHu0_ZLDWAw1mbQ # change to your verification string
 
 #--------------------------
 
@@ -165,11 +165,17 @@ exclude:
   - Gemfile
   - tools
   - docs
-  - py  
+  - py 
+  - '*.py' 
+  - '*.gem'
+  - '*.gemspec'
+  - README.md
+  - CHANGELOG.md
+  - LICENSE
   
 plugins:
   - jekyll-sitemap
-  
+
 sitemap_exclude:  # Sitemap will exclude the following items.
   fuzzy:
     - /assets/

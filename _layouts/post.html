@@ -8,24 +8,25 @@ layout: default
 
 <div class="row">
   {% include date-format.html %}
-
   <div id="post-wrapper" class="col-12 col-lg-11 col-xl-8">
     <div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4">
       <h1 data-toc-skip>{{ page.title }}</h1>
-      <div>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3309468445717403"
-     crossorigin="anonymous"></script>
+
 <!-- bookmana_top -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-3309468445717403"
-     data-ad-slot="2435193430"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-        </div>
+ 
+<div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3309468445717403" crossorigin="anonymous"></script>
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-3309468445717403"
+       data-ad-slot="2435193430"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script> 
+</div>
+
       <div class="post-meta text-muted d-flex flex-column">
         <!-- Published Date and Categoreis -->
         <div>
@@ -59,68 +60,44 @@ layout: default
         {% if page.image %}
         <img src="{{ page.image }}" width="350">
         {% endif %}
-        
-        <!-- Add lozad class into image tags. see: <https://github.com/ApoorvSaxena/lozad.js#usage> -->
-        {% if content contains '<img src=' %}
-          {% capture loading %}{{ "/assets/img/commons/loading.png" | relative_url }}{% endcapture %}
-          {% assign replacement = '<img class="lozad" src=' | append: loading | append: ' data-src=' %}
-          {{ content | replace: '<img src=', replacement }}
-        {% else %}
-          {{ content }}
-        {% endif %}
+        {{ content }}
       </div>
-
-   
-
-    </div> <!-- .post -->
-  </div> <!-- #post-wrapper -->
-
-  
-
-</div> <!-- .row -->
+    </div> 
+  </div> 
+</div>
+<!-- bookmana_bottom -->
+<!-- 
 <div class="row">
   <div id="post-extend-wrapper" class="col-12 col-lg-11 col-xl-8">
-  <!-- bookmana_bottom -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-3309468445717403"
-     data-ad-slot="7837470026"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-3309468445717403"
+       data-ad-slot="7837470026"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
   </div>
 </div>
-<div class="row">
-  <div id="post-extend-wrapper" class="col-12 col-lg-11 col-xl-8">
+ -->
+<div class="row"><div id="post-extend-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><div class="post-navigation d-flex justify-content-between">
+{% if page.previous.url %}
+  <a href="{{ site.baseurl }}{{ page.previous.url }}" class="btn btn-outline-primary">
+  <p>{{ page.previous.title }}</p>
+{% else %}
+  <a href="javascript:;" class="btn btn-outline-primary disabled">
+  <p>-</p>
+{% endif %}
+</a>
+{% if page.next.url %}
+  <a href="{{ site.baseurl }}{{page.next.url}}" class="btn btn-outline-primary">
+  <p>{{ page.next.title }}</p>
+{% else %}
+  <a href="javascript:;" class="btn btn-outline-primary disabled">
+  <p>-</p>
+{% endif %}
+</a>
+</div></div></div></div>
 
-    <div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4">      
 
-      <div class="post-navigation d-flex justify-content-between">
-      {% if page.previous.url %}
-        <a href="{{ site.baseurl }}{{ page.previous.url }}" class="btn btn-outline-primary">
-          <p>{{ page.previous.title }}</p>
-      {% else %}
-        <a href="javascript:;" class="btn btn-outline-primary disabled">
-          <p>-</p>
-      {% endif %}
-        </a>
-
-      {% if page.next.url %}
-        <a href="{{ site.baseurl }}{{page.next.url}}" class="btn btn-outline-primary">
-          <p>{{ page.next.title }}</p>
-      {% else %}
-        <a href="javascript:;" class="btn btn-outline-primary disabled">
-          <p>-</p>
-      {% endif %}
-        </a>
-      </div> <!-- div.post-navigation -->
-
-    </div> <!-- .pl-1 pr-1 -->
-
-  </div> <!-- #post-extend-wrapper -->
-
-</div> <!-- .row -->
-
-{% include lozad.html %}

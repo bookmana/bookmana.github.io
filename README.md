@@ -1,1 +1,1 @@
-hello 
+bundle exec jekyll serve --profile --destination D:\project2022\_site
