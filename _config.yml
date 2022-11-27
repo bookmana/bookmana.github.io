@@ -173,22 +173,20 @@ exclude:
   - CHANGELOG.md
   - LICENSE
   
-plugins:
-  - jekyll-sitemap
+# plugins:
+#   - jekyll-sitemap
 
-sitemap_exclude:  # Sitemap will exclude the following items.
-  fuzzy:
-    - /assets/
-  accurate:
-#     - /norobots/
-    #- /tabs/
-    #- /categories/
-    # - /tags/
-    #- /posts/
-    - 404.html
-    - feed.xml
-    #- sitemap.xml
-    #- robots.txt
-    - redirects.json
-
-
+# sitemap_exclude:  # Sitemap will exclude the following items.
+#   fuzzy:
+#     - /assets/
+#   accurate:
+# #     - /norobots/
+#     #- /tabs/
+#     #- /categories/
+#     # - /tags/
+#     #- /posts/
+#     - 404.html
+#     - feed.xml
+#     #- sitemap.xml
+#     #- robots.txt
+#     - redirects.json
