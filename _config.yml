@@ -69,7 +69,7 @@ first_run: 2021
 # boolean type, global switch for ToC in posts.
 toc: true
 
-paginate: 10
+paginate: 100
 
 markdown: kramdown
 
