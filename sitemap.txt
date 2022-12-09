@@ -1,3 +1,6 @@
+---
+layout: null
+--- 
 https://bookmana.github.io/posts/9791167791559/
 https://bookmana.github.io/posts/9791169518055/
 https://bookmana.github.io/posts/9791140404988/
