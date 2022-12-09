@@ -7,7 +7,6 @@ layout: null
 {% if forloop.index >= 1 %}
 <url>
 <loc>{{ site.url }}{{ post.url }}</loc>
-<lastmod>{{post.date | date_to_xmlschema }}</lastmod>
 </url>
 {% endif %}
 {% if forloop.index > 5000 %}   
