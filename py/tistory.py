@@ -207,8 +207,8 @@ class AutoTistory:
 			res_json = res.json()
 			print(res_json)
 # 1103858
-if __name__ == '__main__':
-	tis = AutoTistory()
-	tis.list_of_Category()
+# if __name__ == '__main__':
+# 	tis = AutoTistory()
+# 	tis.list_of_Category()
 # 	tis.setContent()
 # 	# sendImg('https://shopping-phinf.pstatic.net/main_3246336/32463366149.20221019151105.jpg')
