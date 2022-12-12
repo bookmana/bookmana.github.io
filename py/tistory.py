@@ -93,26 +93,26 @@ class AutoTistory:
 				contentData += f'''<h1> {self.book_nm}</h1>'''
 				contentData += f'''<p> - {book_cd1} {book_cd2}</p>'''
 				contentData += """<p>%s</p>""" % img_text.replace('##_1N','##_Image')
-				contentData += f'''<br/><p> - ISBN : {isbn_no}</p> '''
-				contentData += f'''<p> - 출판사 : {pub_sr}</p> '''
-				contentData += f'''<p> - 출판일 : {pub_dt}</p> '''
-				contentData += f'''<p> - 저자 : {author}</p> '''
+				contentData += f'''<br/><p> - ISBN : {isbn_no} '''
+				contentData += f'''<br/> - 출판사 : {pub_sr} '''
+				contentData += f'''<br/> - 출판일 : {pub_dt} '''
+				contentData += f'''<br/> - 저자 : {author}</p> '''
 				contentData += f'''<p style="border-top: 1px solid #7a583a;"> **요약** </p> '''				
 				contentData += f'''<p> {book_desc2.replace('다.','다.<br/>')} </p> '''
-				contentData += f'''<p style="border-top: 1px solid #7a583a;"> {book_desc.replace('다.','다.<br/>')} </p> '''
-				contentData += f'''<p style="border-top: 1px solid #7a583a;"> {book_desc3.replace('다.','다.<br/>')} </p> '''
+				contentData += f'''<p> {book_desc.replace('다.','다.<br/>')} </p> '''
+				contentData += f'''<p> {book_desc3.replace('다.','다.<br/>')} </p> '''
 				if len(self.review_list) > 0:
 					rv_comment = '''<p style="border-top: 1px solid #7a583a;"> 리뷰</p> '''
 					for review in self.review_list:
 						star = review['star']
 						reg_nm = review['reg_nm']
-						reg_dt = review['reg_dt']
+						# reg_dt = review['reg_dt']
 						comment = review['comment']
 						
 						if comment.find("배송") > -1 or comment.find("주문") > -1:
 							continue
 
-						rv_comment+=f'''  {reg_nm} {comment} {reg_dt} <br/>'''
+						rv_comment+=f'''  {reg_nm}  {comment} <br/>'''
 				
 				self.content = contentData + (rv_comment.replace('다.','다.<br/>').replace('요.','요.<br/>'))
 				

@@ -22,23 +22,23 @@ import make_book
 import random
 #interpark_catid = ['207','208','209','210','211','214','215','216','217','201','200','203','205','206']
 # book_code = {'100':'국내도서','101':'소설','102':'시-에세이','103':'예술-대중문화','104':'사회과학','105':'역사와문화','107':'잡지','108':'만화','109':'유아','110':'아동','111':'가정과생활','112':'청소년','113':'초등학습서','114':'고등학습서','115':'국어-외국어-사전','116':'자연과과학','117':'경제경영','118':'자기계발','119':'인문','120':'종교-역학','122':'컴퓨터-인터넷','123':'자격서-수험서','124':'취미-레저','125':'전공도서-대학교재','126':'건강-뷰티','128':'여행','129':'중등학습서','200':'외국도서','201':'어린이','203':'ELT-사전','205':'문학','206':'경영-인문','207':'예술-디자인','208':'실용','209':'해외잡지','210':'대학교재-전문서적','211':'컴퓨터','214':'일본도서','215':'프랑스도서','216':'중국도서','217':'해외주문원서'}
-TIS = os.getenv('TISTORY_KEY')
-tis_arr  = TIS.split("|")
-app_id=tis_arr[0]
-access_token=tis_arr[1]
-blog_nm=tis_arr[2]
+TIS 		 = os.getenv('TISTORY_KEY')
+tis_arr  	 = TIS.split("|")
+app_id		 = tis_arr[0]
+access_token = tis_arr[1]
+blog_nm		 = tis_arr[2]
 
 NV_CENTER_API = os.getenv('NV_CENTER_API')
-nv_api_arr = NV_CENTER_API.split("|")	
-NV_API_CID = nv_api_arr[0]
-NV_API_SID = nv_api_arr[1]
+nv_api_arr 	  = NV_CENTER_API.split("|")	
+NV_API_CID 	  = nv_api_arr[0]
+NV_API_SID 	  = nv_api_arr[1]
 
 DB_INFO = os.getenv('DB_INFO')
 db_arr  = DB_INFO.split("|")
-host	=db_arr[0]
-user	=db_arr[1]
-pw 		=db_arr[2]
-db 		=db_arr[3]
+host	= db_arr[0]
+user	= db_arr[1]
+pw 		= db_arr[2]
+db 		= db_arr[3]
 
 
 
@@ -192,12 +192,14 @@ if __name__ == '__main__':
 						
 				except Exception as e:
 					print("review list ",e)
+				
 				if cnt == 1 or cnt == 15:
-					tis = tistory.AutoTistory(app_id, access_token, blog_nm)
-					tis.sendTistory(bfo, review_list)					
-
-				else:
-					quit()
+					try:
+						tis = tistory.AutoTistory(app_id, access_token, blog_nm)
+						tis.sendTistory(bfo, review_list)
+					except Exception as e:
+						make_book.create_book(bfo, review_list, cnt )
+				else:					
 					make_book.create_book(bfo, review_list, cnt ) 
 			else:
 				bookManaOrderInsert(isbn)		
