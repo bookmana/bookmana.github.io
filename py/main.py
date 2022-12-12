@@ -14,6 +14,7 @@ import time
 from bs4 import BeautifulSoup
 
 import random
+import tistory
 
 # from inter_review import ParkReview
 
@@ -55,14 +56,13 @@ def naverBookSearch(isbn):
 		rescode = response.getcode()
 		#print("rescode ",rescode)
 		if(rescode==200):
-		    response_body = response.read()		    
-		    #print(type(response_body))
-		    response_text = response_body.decode('utf-8')
-		    #print(response_text)
-		    jsonData = json.loads(response_text)
-		    return jsonData['items'][0]		    
+			response_body = response.read()
+			response_text = response_body.decode('utf-8')
+			jsonData = json.loads(response_text)
+			return jsonData['items'][0]		    
 		else:
-		    print("Error Code:" + rescode)		
+		    print("Error Code:" + rescode)
+
 	except Exception as e:
 		raise e
 
@@ -91,7 +91,7 @@ def kbDetailInfoGet(url):
 def getAscii():
 	return random.choice(string.ascii_lowercase) 	
 
-if __name__ == '__main__':	
+if __name__ == '__main__':		
 	v_page = getRandom()
 	print("v_page : ",v_page)
 	url = f'https://product.kyobobook.co.kr/api/gw/pub/pdt/best-seller/online?page={v_page}&per=100&period=001&dsplDvsnCode=000&dsplTrgtDvsnCode=001'
@@ -181,11 +181,17 @@ if __name__ == '__main__':
 						try:
 							review_list.append({"star":'',"reg_nm":f"{getAscii()}*******","reg_dt":info['cretDttm'],"comment":ask_util.repl_excp(ask_util.getSqlReplace(info['revwCntt']))})
 						except Exception as e:
-							print("for e: ",e);
+							print("for e: ",e)
 						
 				except Exception as e:
-					print("review list ",e)				
-				make_book.create_book(bfo, review_list, cnt ) 
+					print("review list ",e)
+				if cnt == 1 or cnt == 15:
+					tis = tistory.AutoTistory()
+					tis.sendTistory(bfo, review_list)					
+
+				else:
+					quit()
+					make_book.create_book(bfo, review_list, cnt ) 
 			else:
 				bookManaOrderInsert(isbn)		
 			
@@ -202,3 +208,4 @@ if __name__ == '__main__':
 
 
 	#https://crontab.guru/
+
