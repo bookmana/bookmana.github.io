@@ -35,11 +35,13 @@ user	=db_arr[1]
 pw 		=db_arr[2]
 db 		=db_arr[3]
 
-TIS = os.getenv('TISTORY')
+TIS = os.getenv('TISTORY_KEY')
 tis_arr  = TIS.split("|")
 app_id=tis_arr[0]
 access_token=tis_arr[1]
 blog_nm=tis_arr[2]
+
+
 def bookManaOrderInsert(isbn):
 	sqlId = """ INSERT INTO BOOK_MANA_ORDER VALUES('%s',NOW())""" %(isbn)
 	#print(sqlId)
