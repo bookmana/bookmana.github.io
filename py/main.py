@@ -35,6 +35,11 @@ user	=db_arr[1]
 pw 		=db_arr[2]
 db 		=db_arr[3]
 
+TIS = os.getenv('TISTORY')
+tis_arr  = TIS.split("|")
+app_id=tis_arr[0]
+access_token=tis_arr[1]
+blog_nm=tis_arr[2]
 def bookManaOrderInsert(isbn):
 	sqlId = """ INSERT INTO BOOK_MANA_ORDER VALUES('%s',NOW())""" %(isbn)
 	#print(sqlId)
@@ -186,7 +191,7 @@ if __name__ == '__main__':
 				except Exception as e:
 					print("review list ",e)
 				if cnt == 1 or cnt == 15:
-					tis = tistory.AutoTistory()
+					tis = tistory.AutoTistory(app_id, access_token, blog_nm)
 					tis.sendTistory(bfo, review_list)					
 
 				else:

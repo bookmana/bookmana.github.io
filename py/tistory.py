@@ -5,14 +5,13 @@ import requests
 import json
 import re
 # import sleepTime
-TIS = os.getenv('TISTORY')
-tis_arr  = TIS.split("|")
+
 
 class AutoTistory:
-	def __init__(self):
-		self.app_id = tis_arr[0]
-		self.access_token = tis_arr[1]
-		self.blog_nm =tis_arr[2]
+	def __init__(self, app_id, access_token, blog_nm):
+		self.app_id = blog_nm
+		self.access_token = access_token
+		self.blog_nm =blog_nm
 		self.bfo = {}
 		self.review_list = []
 		self.book_nm = ''
