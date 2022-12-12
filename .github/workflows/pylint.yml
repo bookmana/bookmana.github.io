@@ -50,9 +50,9 @@ jobs:
       run: |
         python py/main.py
       env: 
-        NV_CENTER_API: ${{ secrets.NV_CENTER_API }}
-        PARK_API_KEY: ${{ secrets.PARK_API_KEY }}
+        NV_CENTER_API: ${{ secrets.NV_CENTER_API }}        
         DB_INFO: ${{ secrets.DB_INFO }}
+        TISTORY_KEY: ${{ secrets.TISTORY_KEY }}
         
     - name: push changed files    
       run: |
