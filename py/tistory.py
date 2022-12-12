@@ -5,9 +5,9 @@ import requests
 import json
 import re
 # import sleepTime
-TISTORY = os.getenv('TISTORY')
-tis_arr  = TISTORY.split("|")
- 
+TIS = os.getenv('TISTORY')
+tis_arr  = TIS.split("|")
+
 class AutoTistory:
 	def __init__(self):
 		self.app_id = tis_arr[0]
