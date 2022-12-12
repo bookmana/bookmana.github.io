@@ -6,7 +6,6 @@ import json
 import re
 # import sleepTime
 
-
 class AutoTistory:
 	def __init__(self, app_id, access_token, blog_nm):
 		self.app_id = blog_nm
@@ -20,12 +19,13 @@ class AutoTistory:
 		print(self.blog_nm, self.app_id, self.access_token)
 
 	def sendImg(self, imgage_path):
+		print("imgage_path : ",imgage_path)			
+		dir_path = '{}/img_{}.png'.format(os.path.dirname(__file__), str(round(time.time())) )
 		try:			
-			print("imgage_path : ",imgage_path)			
-			dir_path = '{}/img_{}.png'.format(os.path.dirname(__file__), str(round(time.time())) )
 			urllib.request.urlretrieve(imgage_path,dir_path)
 			# print("dir_path : ",dir_path)
-			print("img_path : ",dir_path)
+			print("img_path : ",dir_path)	
+			# quit()		
 			url = "https://www.tistory.com/apis/post/attach"   
 			data 		= {'access_token':self.access_token, 'blogName':self.blog_nm, 'output':'json'}
 			files 		= {'uploadedfile': open(dir_path, 'rb') }
@@ -53,6 +53,9 @@ class AutoTistory:
 			print("sendImg err :",e)
 			# self.bot.sendMsg("tis setContent fail")
 			return False
+		finally:
+			print("remove file")	
+			os.remove(dir_path)
 
 	def setContent(self):
 
@@ -206,9 +209,17 @@ class AutoTistory:
 		if res.status_code == 200:
 			res_json = res.json()
 			print(res_json)
+
 # 1103858
 # if __name__ == '__main__':
-# 	tis = AutoTistory()
+# 	TIS 		 = os.getenv('TISTORY_KEY')
+# 	tis_arr  	 = TIS.split("|")
+# 	app_id		 = tis_arr[0]
+# 	access_token = tis_arr[1]
+# 	blog_nm		 = tis_arr[2]
+# 	tis = AutoTistory(tis_arr[0],tis_arr[1],tis_arr[2])
+# 	tis.sendImg('https://shopping-phinf.pstatic.net/main_3246336/32463366149.20221019151105.jpg')
+
 # 	tis.list_of_Category()
 # 	tis.setContent()
-# 	# sendImg('https://shopping-phinf.pstatic.net/main_3246336/32463366149.20221019151105.jpg')
+# 	# sendImg()
