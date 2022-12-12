@@ -7,7 +7,7 @@ import re
 # import sleepTime
 TISTORY = os.getenv('TISTORY')
 tis_arr  = TISTORY.split("|")
-
+ 
 class AutoTistory:
 	def __init__(self):
 		self.app_id = tis_arr[0]
