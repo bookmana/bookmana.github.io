@@ -193,7 +193,7 @@ if __name__ == '__main__':
 				except Exception as e:
 					print("review list ",e)
 				
-				if cnt == 1 or cnt == 9:
+				if cnt == 1 or cnt == 4:
 					try:
 						tis = tistory.AutoTistory(app_id, access_token, blog_nm)
 						tis.sendTistory(bfo, review_list)
@@ -204,7 +204,7 @@ if __name__ == '__main__':
 			else:
 				bookManaOrderInsert(isbn)		
 			
-			if cnt > 10:
+			if cnt > 5:
 				quit()
 
 			time.sleep(1)
