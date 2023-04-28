@@ -105,6 +105,7 @@ if __name__ == '__main__':
 	ad = ask_db.AskDb(host, user, pw, db)
 	try:	
 		bookData = kbInfo(url)
+		print("bookData : ",bookData)
 		cnt = 0
 		for i in bookData['data']['bestSeller']:
 			print("i ",i)		
