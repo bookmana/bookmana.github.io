@@ -83,6 +83,7 @@ def custUtil(f, nm):
 def kbInfo(url):			
 	res  = requests.get(url, timeout=25)	
 	print(res)
+	print(".json() : ",res.json())
 	return res.json()
 
 
@@ -104,8 +105,7 @@ if __name__ == '__main__':
 	url = f'https://product.kyobobook.co.kr/api/gw/pub/pdt/best-seller/online?page={v_page}&per=100&period=001&dsplDvsnCode=000&dsplTrgtDvsnCode=001'
 	ad = ask_db.AskDb(host, user, pw, db)
 	try:	
-		bookData = kbInfo(url)
-		print("bookData : ",bookData)
+		bookData = kbInfo(url)		
 		cnt = 0
 		for i in bookData['data']['bestSeller']:
 			print("i ",i)		
