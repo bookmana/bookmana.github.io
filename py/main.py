@@ -82,7 +82,7 @@ def custUtil(f, nm):
 
 def kbInfo(url):			
 	res  = requests.get(url, timeout=25)	
-	# print(res)
+	print(res)
 	return res.json()
 
 
@@ -107,7 +107,7 @@ if __name__ == '__main__':
 		bookData = kbInfo(url)
 		cnt = 0
 		for i in bookData['data']['bestSeller']:
-			# print("i ",i)		
+			print("i ",i)		
 			isbn 				= custUtil(i, 'cmdtCode') 
 			if isBookMana(isbn) > 0:
 				continue
